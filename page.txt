@@ -1,256 +1,769 @@
-<!doctype html>
-<html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#" class="no-js" ng-app="passport" lang="{{lang === 'en_US'?'en':'zh'}}">
 
-<head>
-    <base href="/">
-    <meta charset="utf-8">
-    <!-- SEO site verification-->
-    <!--baidu-->
-    <meta name="baidu-site-verification" content="R7haMTBzc7" />
-    <!--bing-->
-    <meta name="msvalidate.01" content="9AF7EC0788061709CD0F93CA3405739C" />
-    <!--google-->
-    <meta name="google-site-verification" content="OYoKXw_MYGcd_rEoQsdShwerXX27jVovSdMZJ_Hx7ps" />
-    <title ng-bind="seoTitle"></title>
-    <meta name="keywords" lang="en" content="BTCC,Bitcoin,Exchange,Buy,Sell,Trade,Wallet,Bitcoin mining,Bitcoin price,Mining platform,Blockchain,Coinbase engraving,Litecoin,Coinbase,Cyrptocurrency,BTCChina,Bobby Lee,Bitcoin payments,Bitcoin ATM,Bitcoin in China">
-    <meta name="keywords" lang="zh" content="BTCC,比特币中国,比特币,交易所,买入,卖出,交易,钱包,比特币挖矿,比特币价格,比特币多少钱,矿池,区矿链,Coinbase, 生产交易,coinbase交易,区块链刻字,莱特币,生产交易,数字加密货币,Bobby Lee, 李启元,比特币支付,比特币ATM，比特币取款机,比特币在中国,比特币在中国的现状">
-    <meta name="description" lang="en" content="BTCC plays a leading role in the cryptocurrency ecosystem, offering bitcoin and litecoin exchanges, a mining pool, payment processing, a wallet, and more." />
-    <meta name="description" lang="zh" content="BTCC在加密货币生态系统中扮演者领导性的角色，我们提供比特币交易所、矿池、支付处理以及区块链和钱包等服务。" />
-    <meta name="viewport" content="width=device-width">
 
-    <meta itemprop="name" content="BTCC - Your Bitcoin Company">
-    <meta itemprop="description" content="BTCC plays a leading role in the cryptocurrency ecosystem, offering a bitcoin exchange, mining pool, payment processing, and blockchain and wallet services.">
-    <meta itemprop="image" content= "https://www.btcc.com/press/assets/BTCC_Product_V2/BTCC_Product_Your_Bitcoin_Company.jpg?v=2">
 
-    <!-- twitter meta tags -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@YourBTCC" />
-    <meta name="twitter:title" content="BTCC - Your Bitcoin Company">
-    <meta name="twitter:description" content="BTCC offers bitcoin exchanges, mining pool, payment processing, and blockchain and wallet services.">
-    <meta name="twitter:image" content="https://www.btcc.com/press/assets/BTCC_Product_V2/twitter-logo-42d32d0426.png" />
-    <meta name="twitter:url" content="https://www.btcc.com/" />
-    <meta name="twitter:widgets:share-with-retweet" content="publisher-only" />
-    <!-- end of twitter meta tags -->
+		
+  
+  
 
-    <meta property="og:title" content="BTCC - Your Bitcoin Company"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:url" content="https://www.btcc.com/"/>
-    <meta property="og:image" content="https://www.btcc.com/press/assets/BTCC_Product_V2/BTCC_Product_Your_Bitcoin_Company.jpg"/>
-    <meta property="og:description" content="BTCC plays a leading role in the cryptocurrency ecosystem, offering a bitcoin exchange, mining pool, payment processing, and blockchain and wallet services."/>
+	<!doctype html>
+    <html ng-app="btcc-cms">
+    	<head>
+    		<meta charset="utf-8">
+    		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    		<meta name="baidu-site-verification" content="kVhr2cIv31" />
+ <meta name="google-site-verification" content="OYoKXw_MYGcd_rEoQsdShwerXX27jVovSdMZJ_Hx7ps" />
 
-    <link rel="icon" href="https://static.btcc.com/assets/favicon.png">
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
-    <!-- Place favicon-1353ce0962.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="styles/main-8c63c5ddad.css">
-    <script>
-            var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
-            // Opera 8.0+ (UA detection to detect Blink/v8-powered Opera)
-            var isFirefox = typeof InstallTrigger !== 'undefined'; // Firefox 1.0+
-            var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
-            // At least Safari 3+: "[object HTMLElementConstructor]"
-            var isChrome = !!window.chrome && !isOpera; // Chrome 1+
-            var isIE = /*@cc_on!@*/ false || !!document.documentMode; // At least IE6
+<script>
+ var _hmt = _hmt || [];
+ (function() {
+     var hm = document.createElement("script");
+     hm.src = "//hm.baidu.com/hm.js?c3fc3b8cd7a4c51920b20de4a6ff30cb";
+     var s = document.getElementsByTagName("script")[0];
+     s.parentNode.insertBefore(hm, s);
+ })();
 
-            navigator.sayswho = (function() {
-                var ua = navigator.userAgent,
-                        tem,
-                        M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-                if (/trident/i.test(M[1])) {
-                    tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
-                    return 'IE ' + (tem[1] || '');
-                }
-                if (M[1] === 'Chrome') {
-                    tem = ua.match(/\bOPR\/(\d+)/);
-                    if (tem != null) return 'Opera ' + tem[1];
-                }
-                M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
-                if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
-                return M.join(' ');
-            })();
 
-            var version = navigator.sayswho.split(' ')[1];
-            if (isIE && +version < 10) {
-                window.location.href = 'https://exchange.btcc.com/index/unsupported.browser';
-            }
-    </script>
-</head>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','site/js/analytics.js','ga');
 
-<body ng-cloak ng-class="{windows: windows}">
-    <!-- Add your site or application content here -->
-    <!-- header -->
-    <!--<top-bar></top-bar>-->
-    <div id="reactGeneralNotification" class="empty"></div>
-    <div id="reactGeneralHeader"></div>
-    <!-- main content -->
-    <div class="warpper">
-        <article ng-view id="main_container"></article>
-        <div class="push"></div>
-    </div>
-    <!-- footer -->
-    <div id="reactGeneralFooter"></div>
-    <check-modal></check-modal>
-    <!--[if lt IE 9]>
-    <script src="scripts/oldieshim-ab2ee70991.js"></script>
-    <![endif]-->
+ ga('create', 'UA-43867519-6', 'auto');
+ setTimeout(function(){
+     ga('send', 'pageview');
+ }, 5000);
+</script>
 
-    <script src="scripts/vendor-1ff3cb5d2f.js"></script>
+            
+                 <title>BTCC - Your Bitcoin Company</title>
 
-    <script src="scripts/scripts-75134d109c.js"></script>
+    		
 
-    <script src="https://static.btcc.com/core/coreweb.js"></script>
-    <script src="https://static.btcc.com/core/coreweb-activity.js"></script>
-    <script src="https://static.btcc.com/core/coreweb-footer.js"></script>
-    <script src="https://static.btcc.com/core/coreweb-header.js"></script>
-    <script src="https://static.btcc.com/core/coreweb-notification.js"></script>
-    <script src="https://static.btcc.com/core/coreweb-quotation.js"></script>
-    <script src="https://static.btcc.com/core/coreweb-volume.js"></script>
 
-    <script>
-    $(document).ready(function() {
-        var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
-        // Opera 8.0+ (UA detection to detect Blink/v8-powered Opera)
-        var isFirefox = typeof InstallTrigger !== 'undefined'; // Firefox 1.0+
-        var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
-        // At least Safari 3+: "[object HTMLElementConstructor]"
-        var isChrome = !!window.chrome && !isOpera; // Chrome 1+
-        var isIE = /*@cc_on!@*/ false || !!document.documentMode; // At least IE6
-
-        navigator.sayswho = (function() {
-            var ua = navigator.userAgent,
-                tem,
-                M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-            if (/trident/i.test(M[1])) {
-                tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
-                return 'IE ' + (tem[1] || '');
-            }
-            if (M[1] === 'Chrome') {
-                tem = ua.match(/\bOPR\/(\d+)/);
-                if (tem != null) return 'Opera ' + tem[1];
-            }
-            M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
-            if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
-            return M.join(' ');
-        })();
-
-        var version = navigator.sayswho.split(' ')[1];
-        if (isIE) {
-            $('body').addClass('ie');
-        }
-    });
-    </script>
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?c3fc3b8cd7a4c51920b20de4a6ff30cb";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','scripts/analytics.js','ga');
-
-        ga('create', 'UA-43867519-6', 'auto');
-        ga('send', 'pageview');
-
-    </script>
-    <!-- begin olark code -->
-    <script data-cfasync="false" type='text/javascript'>
-    /*<![CDATA[*/
-    window.olark || (function(c) {
-        var f = window,
-            d = document,
-            l = f.location.protocol == "https:" ? "https:" : "http:",
-            z = c.name,
-            r = "load";
-        var nt = function() {
-            f[z] = function() {
-                (a.s = a.s || []).push(arguments)
-            };
-            var a = f[z]._ = {},
-                q = c.methods.length;
-            while (q--) {
-                (function(n) {
-                    f[z][n] = function() {
-                        f[z]("call", n, arguments)
+			  <link rel="icon" href="https://static.btcc.com/assets/favicon.png">
+    
+    		
+    		<link href="/site/css/site.css" rel="stylesheet">
+    
+    		
+    		<link href="/site/css/vendor.css" rel="stylesheet">
+    		<link href="/site/css/app.css" rel="stylesheet">
+    		
+    		<!--[if lt IE 9]>
+    			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    		<![endif]-->
+    		
+    
+		    <script src="/site/js/jquery-1.11.2.min.js"></script>
+		    <script src="/site/js/anchorific.js"></script>
+    		
+    		<!--[if lte IE 9]>
+		    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		    <script>
+		        $(function () {
+		            var updateBrowser = function () {
+		                $('body').empty();
+		                $('body').load('html/ie.html');
+		            };
+		            updateBrowser();
+		        });
+		        (function () {
+                    function CustomEvent ( event, params ) {
+                        params = params || { bubbles: false, cancelable: false, detail: undefined };
+                        var evt = document.createEvent( 'CustomEvent' );
+                        evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+                        return evt;
                     }
-                })(c.methods[q])
-            }
-            a.l = c.loader;
-            a.i = nt;
-            a.p = {
-                0: +new Date
-            };
-            a.P = function(u) {
-                a.p[u] = new Date - a.p[0]
-            };
 
-            function s() {
-                a.P(r);
-                f[z](r)
-            }
-            f.addEventListener ? f.addEventListener(r, s, false) : f.attachEvent("on" + r, s);
-            var ld = function() {
-                function p(hd) {
-                    hd = "head";
-                    return ["<", hd, "></", hd, "><", i, ' onl' + 'oad="var d=', g, ";d.getElementsByTagName('head')[0].", j, "(d.", h, "('script')).", k, "='", l, "//", a.l, "'", '"', "></", i, ">"].join("")
-                }
-                var i = "body",
-                    m = d[i];
-                if (!m) {
-                    return setTimeout(ld, 100)
-                }
-                a.P(1);
-                var j = "appendChild",
-                    h = "createElement",
-                    k = "src",
-                    n = d[h]("div"),
-                    v = n[j](d[h](z)),
-                    b = d[h]("iframe"),
-                    g = "document",
-                    e = "domain",
-                    o;
-                n.style.display = "none";
-                m.insertBefore(n, m.firstChild).id = z;
-                b.frameBorder = "0";
-                b.id = z + "-loader";
-                if (/MSIE[ ]+6/.test(navigator.userAgent)) {
-                    b.src = "javascript:false"
-                }
-                b.allowTransparency = "true";
-                v[j](b);
-                try {
-                    b.contentWindow[g].open()
-                } catch (w) {
-                    c[e] = d[e];
-                    o = "javascript:var d=" + g + ".open();d.domain='" + d.domain + "';";
-                    b[k] = o + "void(0);"
-                }
-                try {
-                    var t = b.contentWindow[g];
-                    t.write(p());
-                    t.close()
-                } catch (x) {
-                    b[k] = o + 'd.write("' + p().replace(/"/g, String.fromCharCode(92) + '"') + '");d.close();'
-                }
-                a.P(2)
-            };
-            ld()
-        };
-        nt()
-    })({
-        loader: "static.olark.com/jsclient/loader0.js",
-        name: "olark",
-        methods: ["configure", "extend", "declare", "identify"]
-    });
-    /* custom configuration goes here (www.olark.com/documentation) */
-    olark.identify('6586-959-10-8046'); /*]]>*/
-    </script>
-    <noscript><a href="https://www.olark.com/site/6586-959-10-8046/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
-    <!-- end olark code -->
-</body>
+                    CustomEvent.prototype = window.Event.prototype;
 
+                    window.CustomEvent = CustomEvent;
+                })();
+		    </script>
+			<![endif]-->
+    	</head>
+    	<body ng-controller="mainCtrl">
+			
+				<div id="reactGeneralNotification" class="empty"></div>
+				<div id="reactGeneralHeader"></div>
+				
+				<!-- begin olark code -->
+                   <script data-cfasync="false" type='text/javascript'>
+                   /*<![CDATA[*/
+                   window.olark || (function(c) {
+                       var f = window,
+                           d = document,
+                           l = f.location.protocol == "https:" ? "https:" : "http:",
+                           z = c.name,
+                           r = "load";
+                       var nt = function() {
+                           f[z] = function() {
+                               (a.s = a.s || []).push(arguments)
+                           };
+                           var a = f[z]._ = {},
+                               q = c.methods.length;
+                           while (q--) {
+                               (function(n) {
+                                   f[z][n] = function() {
+                                       f[z]("call", n, arguments)
+                                   }
+                               })(c.methods[q])
+                           }
+                           a.l = c.loader;
+                           a.i = nt;
+                           a.p = {
+                               0: +new Date
+                           };
+                           a.P = function(u) {
+                               a.p[u] = new Date - a.p[0]
+                           };
+                
+                           function s() {
+                               a.P(r);
+                               f[z](r)
+                           }
+                           f.addEventListener ? f.addEventListener(r, s, false) : f.attachEvent("on" + r, s);
+                           var ld = function() {
+                               function p(hd) {
+                                   hd = "head";
+                                   return ["<", hd, "></", hd, "><", i, ' onl' + 'oad="var d=', g, ";d.getElementsByTagName('head')[0].", j, "(d.", h, "('script')).", k, "='", l, "//", a.l, "'", '"', "></", i, ">"].join("")
+                               }
+                               var i = "body",
+                                   m = d[i];
+                               if (!m) {
+                                   return setTimeout(ld, 100)
+                               }
+                               a.P(1);
+                               var j = "appendChild",
+                                   h = "createElement",
+                                   k = "src",
+                                   n = d[h]("div"),
+                                   v = n[j](d[h](z)),
+                                   b = d[h]("iframe"),
+                                   g = "document",
+                                   e = "domain",
+                                   o;
+                               n.style.display = "none";
+                               m.insertBefore(n, m.firstChild).id = z;
+                               b.frameBorder = "0";
+                               b.id = z + "-loader";
+                               if (/MSIE[ ]+6/.test(navigator.userAgent)) {
+                                   b.src = "javascript:false"
+                               }
+                               b.allowTransparency = "true";
+                               v[j](b);
+                               try {
+                                   b.contentWindow[g].open()
+                               } catch (w) {
+                                   c[e] = d[e];
+                                   o = "javascript:var d=" + g + ".open();d.domain='" + d.domain + "';";
+                                   b[k] = o + "void(0);"
+                               }
+                               try {
+                                   var t = b.contentWindow[g];
+                                   t.write(p());
+                                   t.close()
+                               } catch (x) {
+                                   b[k] = o + 'd.write("' + p().replace(/"/g, String.fromCharCode(92) + '"') + '");d.close();'
+                               }
+                               a.P(2)
+                           };
+                           ld()
+                       };
+                       nt()
+                   })({
+                       loader: "static.olark.com/jsclient/loader0.js",
+                       name: "olark",
+                       methods: ["configure", "extend", "declare", "identify"]
+                   });
+                   /* custom configuration goes here (www.olark.com/documentation) */
+                   
+                   
+                   // Chinese translate 
+                   // 需要支持语言切换
+                 
+                 	
+                   
+                   
+                                      
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   olark.identify('6586-959-10-8046'); /*]]>*/
+                   
+                  
+                   
+                   
+                   
+                   </script>
+                   <noscript><a href="https://www.olark.com/site/6586-959-10-8046/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+                   <!-- end olark code -->
+                   
+                   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+                      <script>
+                      (function(i, s, o, g, r, a, m) {
+                          i['GoogleAnalyticsObject'] = r;
+                          i[r] = i[r] || function() {
+                              (i[r].q = i[r].q || []).push(arguments)
+                          }, i[r].l = 1 * new Date();
+                          a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+                          a.async = 1;
+                          a.src = g;
+                          m.parentNode.insertBefore(a, m)
+                      })(window, document, 'script', '/site/js/analytics.js', 'ga');
+                      ga('create', 'UA-43867519-6', 'btcc.com');
+                      setTimeout(function() {
+                          ga('send', 'pageview');
+                      }, 3000);
+                      </script>
+          
+			
+			 <div class="modal fade" id="login" ng-controller="loginCtrl">
+	<div class="auth-mask">
+			<div  class="auth-container">
+				<div class="authentication">
+					<div class="front">
+							<div class="auth-header">
+								<h1>SIGN IN</h1>
+							</div>
+							<form name="formLogin" id="sign_in_form" novalidate>
+								<div class="form-item">
+									<label>Username/Email</label>
+									<input name="username" type="text" autofocus required class="form-control" ng-class="{'red-border': invalidUser}" ng-model="user.username" ng-change="usernameChanged()" ng-focus="focusInput($event)" ng-blur="unfocusInput($event)">
+								</div>
+								<div class="form-item">
+									<label>Password</label>
+									<input name="password" type="password" required class="form-control"  ng-class="{'red-border': invalidUser}" enter-key="login(user);"  ng-model="user.password" ng-change="invalidUser = false"  ng-focus="focusInput($event)" ng-blur="unfocusInput($event)">
+									<a class="forgot-password" href="[[site]]/#/forgot-password" target="_blank">Forget Password?</a>
+								</div>
+								<div class="error_box">
+									<div class="error" ng-show="(formLogin.username.$dirty && formLogin.password.$dirty)">
+									</div>
+									<div class="error invalid-user" ng-show="invalidUser">
+										Username or password is incorrect, please try again.
+									</div>
+									<div class="error wrong-captcha" ng-show="wrongCaptcha">
+										Captcha is incorrect, please try again.
+									</div>
+									<div class="error need-captcha" ng-show="needCaptcha">
+										Please input verification code
+									</div>
+									<div class="error locked" ng-show="userLocked">
+										Your account has been temporarily locked for 3 hours because of security issues, after that system will unlock your account automatically. 
+										<span class="close" ng-click="userLocked=false"></span>
+									</div>
+									<div class="error locked" ng-show="systemError">
+										Our system is currently busy. Please try again later.
+										<span class="close" ng-click="systemError=false"></span>
+									</div>
+									<div class="error locked" ng-show="lockedForever">
+										Your account has been locked. Please contact us at support@btcc.com for more information.
+									
+										<span class="close" ng-click="lockedForever=false"></span>
+									</div>
+								</div>
+								<div class="form-item inline-item captcha-input" ng-show="showCaptcha">
+									<label>Captcha</label>
+									<input name="captcha" type="text" ng-pattern="digital" required  class="form-control" ng-class="{'red-border': wrongCaptcha}" ng-model="user.captcha" enter-key="login(user);" ng-change="captchaChanged()"  ng-minlength="4" ng-maxlength="4"  ng-focus="focusInput($event)" ng-blur="unfocusInput($event)"/>
+								</div>
+								<div class="form-item inline-item captcha-img" ng-show="showCaptcha">
+										<!-- captcha image -->
+										<img ng-src="[[captchaUrl]]" alt="captcha" class="captcha" ng-click="refreshCaptcha()">
+										<span class="ci-icon-uniE810" ng-click="refreshCaptcha()"></span>
+								</div>
+								<div class="checkbox-item"> <label class="ng-binding"><input type="checkbox" ng-model="user.keepLogin" class="ng-pristine ng-untouched ng-valid">Keep me signed in on this computer</label> </div>
+									<a id="padding:15px;" class="btn btn-blue" style="width: 100%" ng-click="login(user)" ng-disabled="[[wrongCaptcha || needCaptcha || invalidUser || wrongGaCode]]">SIGN IN
+									<span class="spinner" ng-if="showLoginSpinner"></span>
+									</a>
+							</form>
+					 </div>
+					 <!--two-->
+	        <div class="back">
+	        	<p class="google-auth-header">
+	        		Login two-factor authentication
+	        		<a class="back-to-signin" ng-click="backToSignin()"><i class="ci-icon-uniE8D1"></i></a>
+	        	</p>
+	        	<p class="google-auth-note">Your account has enabled login two-factor authentication, please confirm the following information.</p>
+						<form autocomplete="off" name="formLogin" novalidate id="ga_sigin_in_form">
+							<div class="cannot-verify">
+								<a ng-click="disableLoginAuth()">Cannot verify?</a>	
+							</div>
+							<div class="form-group">
+								<input type="tel" autofocus ng-pattern="digital" class="form-control"  name="Pin" ng-model="user.pin" enter-key="confirm(user)"  ng-change="gaCodeChanged()" placeholder="Enter the 6 digit Google Authenticator Code">
+							</div>
+							<div ng-show="emailSent" class="email-sent">
+								<p>We have sent a confirmation email to your mailbox [[email]], please click the link in the email to disable two-factor authentication.</p>
+								<p class="not-recive">after [[resendCountdown]]s,If cannot receive email		
+								<a class="resend" ng-click="resendEmail()" ng-disabled="resendCountdown">Resend email</p></a></p>
+							</div>
+							<div class="error_box">
+								<div class="error" ng-show="wrongGaCode">Two factor error.
+								</div>
+							</div>
+							<a id="google-auth-button" ng-click="confirm(user)" ng-disabled="wrongGaCode">Confirm</a>
+						</form>
+	        </div>				
+        </div>
+			</div>
+	</div>
+</div>
+		
+		
+		<div id="body">
+			
+
+			
+<div class="news-content">
+	<div class="news-top">
+		<div class="news-banner">
+		
+		<style>
+canvas {
+      float: right;
+      opacity: 0.5;
+      mix-blend-mode: overlay;
+      width: 1200px;
+      height: 600px;
+    }
+</style>
+
+<div id="tile_background">
+            <canvas></canvas>
+            <canvas></canvas>                
+            <canvas></canvas>
+
+</div>   
+  <script src="/site/js/banner.js"></script>
+		
+		</div>
+		<div class="news-text">
+			<p>NEWS</p>
+		</div>
+	</div>
+	
+	<div id="reactGeneralActivity"></div>
+      
+
+
+			
+	<div class="container-fixed">
+		<div class="row">
+				
+					
+						
+
+						
+						<div class="news">
+							
+								
+	<div class="item" data-ks-editable="editable(user, { list: 'News', id: item.id })">
+		<div class="news-image-container">
+			
+				
+					<a href="/news/article/btcc-spot-exchange-margin-loans" target="_parent">			<img src="/site/images/uploads/news/5790498c00d015640c164e9f_1469074057461.jpg" width='236px' height='146px' alt="" /></a>
+				
+			
+		</div>
+		<div class="news-title-container">
+			<p class="news-title">
+                
+                    <a href="/news/article/btcc-spot-exchange-margin-loans" target="_parent">BTCC Spot Exchange Margin Loan Interest Payment Changes</a>
+                
+			</p>
+			<p class="news-time">
+				
+					Jul 21,  2016
+				
+			</p>
+		</div>
+		<div class="news-content-container">
+		<div class="news-brief">
+			 BTCC will implement changes to the Spot Exchange margin loan system at 12:00 AM (UTC+8) on August 1st.
+		</div>
+		
+		
+		
+		</div>
+	</div>
+
+							
+								
+	<div class="item" data-ks-editable="editable(user, { list: 'News', id: item.id })">
+		<div class="news-image-container">
+			
+				
+					<a href="/news/article/btcc-pool-fee-update" target="_parent">			<img src="/site/images/uploads/news/5781897d965da4f2680da83f_1468108386786.jpg" width='236px' height='146px' alt="" /></a>
+				
+			
+		</div>
+		<div class="news-title-container">
+			<p class="news-title">
+                
+                    <a href="/news/article/btcc-pool-fee-update" target="_parent">BTCC Pool Fee Update</a>
+                
+			</p>
+			<p class="news-time">
+				
+					Jul 10,  2016
+				
+			</p>
+		</div>
+		<div class="news-content-container">
+		<div class="news-brief">
+			BTCC Pool adopted a new fee structure after the second bitcoin block halving on July 10th. Miners will now enjoy a simplified and more favorable fee structure. 
+		</div>
+		
+		
+		
+		</div>
+	</div>
+
+							
+								
+	<div class="item" data-ks-editable="editable(user, { list: 'News', id: item.id })">
+		<div class="news-image-container">
+			
+				
+					<a href="/news/article/btcc-introduces-titanium-collectible-containing-full-bitcoin-block" target="_parent">			<img src="/site/images/uploads/news/5775299c9ba398f56ba6a00c_1467297981879.jpg" width='236px' height='146px' alt="" /></a>
+				
+			
+		</div>
+		<div class="news-title-container">
+			<p class="news-title">
+                
+                    <a href="/news/article/btcc-introduces-titanium-collectible-containing-full-bitcoin-block" target="_parent">BTCC Introduces Titanium Collectible Containing Full Bitcoin Block</a>
+                
+			</p>
+			<p class="news-time">
+				
+					Jun 30,  2016
+				
+			</p>
+		</div>
+		<div class="news-content-container">
+		<div class="news-brief">
+			BTCC today announced the release of a new series of titanium collectibles that each contain an entire bitcoin block. The Bitcoin Block is the world’s first physical bitcoin product to contain the full uncirculated block reward.
+		</div>
+		
+		
+		
+		</div>
+	</div>
+
+							
+								
+	<div class="item" data-ks-editable="editable(user, { list: 'News', id: item.id })">
+		<div class="news-image-container">
+			
+				
+					<a href="/news/article/btccs-firsts" target="_parent">			<img src="/site/images/uploads/news/57599090aaae55d16a98f240_1465490595310.jpg" width='236px' height='146px' alt="" /></a>
+				
+			
+		</div>
+		<div class="news-title-container">
+			<p class="news-title">
+                
+                    <a href="/news/article/btccs-firsts" target="_parent">BTCC&#39;s Firsts</a>
+                
+			</p>
+			<p class="news-time">
+				
+					Jun 09,  2016
+				
+			</p>
+		</div>
+		<div class="news-content-container">
+		<div class="news-brief">
+			Today, June 9th, is BTCC's fifth anniversary. To celebrate the occasion, we made a graphic that looks at BTCC's innovations since June 2011.
+		</div>
+		
+		
+		
+		</div>
+	</div>
+
+							
+								
+	<div class="item" data-ks-editable="editable(user, { list: 'News', id: item.id })">
+		<div class="news-image-container">
+			
+				
+					<a href="/news/article/btcc-launches-five-bitcoin-titanium-coin-on-fifth-anniversary" target="_parent">			<img src="/site/images/uploads/news/57582d4722bb1b1e5313f5c0_1465401859655.jpg" width='236px' height='146px' alt="" /></a>
+				
+			
+		</div>
+		<div class="news-title-container">
+			<p class="news-title">
+                
+                    <a href="/news/article/btcc-launches-five-bitcoin-titanium-coin-on-fifth-anniversary" target="_parent">BTCC Launches Five Bitcoin Titanium Coin on Fifth Anniversary</a>
+                
+			</p>
+			<p class="news-time">
+				
+					Jun 08,  2016
+				
+			</p>
+		</div>
+		<div class="news-content-container">
+		<div class="news-brief">
+			BTCC today introduced a new set of physical bitcoins to celebrate its fifth anniversary. The 2016 V Series Five Bitcoin is a 50 mm diameter physical bitcoin, 5 mm thick, struck in pure titanium.
+		</div>
+		
+		
+		
+		</div>
+	</div>
+
+							
+								
+	<div class="item" data-ks-editable="editable(user, { list: 'News', id: item.id })">
+		<div class="news-image-container">
+			
+				
+					<a href="/news/article/btcc-today-launched-titanium-physical-bitcoins" target="_parent">			<img src="/site/images/uploads/news/5746de8d42c9a4ff40a40bdc_1464270597676.png" width='236px' height='146px' alt="" /></a>
+				
+			
+		</div>
+		<div class="news-title-container">
+			<p class="news-title">
+                
+                    <a href="/news/article/btcc-today-launched-titanium-physical-bitcoins" target="_parent">BTCC Launches Titanium Physical Bitcoins</a>
+                
+			</p>
+			<p class="news-time">
+				
+					May 26,  2016
+				
+			</p>
+		</div>
+		<div class="news-content-container">
+		<div class="news-brief">
+			BTCC today introduced its new line of titanium physical bitcoins. BTCC Mint is the first in the industry to offer physical coins with uncirculated bitcoins. The inaugural issue of BTCC Mint coins is the 2016 One Bitcoin V Series, a titanium physical bitcoin with a private key worth one bitcoin attached to it.
+		</div>
+		
+		
+		
+		</div>
+	</div>
+
+							
+								
+	<div class="item" data-ks-editable="editable(user, { list: 'News', id: item.id })">
+		<div class="news-image-container">
+			
+				
+					<a href="/news/article/btcc-pool-today-launched-international-service" target="_parent">			<img src="/site/images/uploads/news/5719f90bee364a7a16e5988d_1461321833535.png" width='236px' height='146px' alt="" /></a>
+				
+			
+		</div>
+		<div class="news-title-container">
+			<p class="news-title">
+                
+                    <a href="/news/article/btcc-pool-today-launched-international-service" target="_parent">BTCC Pool Launches International Service</a>
+                
+			</p>
+			<p class="news-time">
+				
+					Apr 22,  2016
+				
+			</p>
+		</div>
+		<div class="news-content-container">
+		<div class="news-brief">
+			BTCC Pool is happy to announce the launch of its international service. The mining pool deployed servers in strategic locations that enable its customers to rapidly connect to the pool from all seven continents.
+		</div>
+		
+		
+		
+		</div>
+	</div>
+
+							
+								
+	<div class="item" data-ks-editable="editable(user, { list: 'News', id: item.id })">
+		<div class="news-image-container">
+			
+				
+					<a href="/news/article/bitcoin-mining-documentary-aired-in-china" target="_parent">			<img src="/site/images/uploads/news/56fe60c9a81e62087f87a80a_1459513817534.jpg" width='236px' height='146px' alt="" /></a>
+				
+			
+		</div>
+		<div class="news-title-container">
+			<p class="news-title">
+                
+                    <a href="/news/article/bitcoin-mining-documentary-aired-in-china" target="_parent">Bitcoin Mining Documentary Aired in China</a>
+                
+			</p>
+			<p class="news-time">
+				
+					Apr 01,  2016
+				
+			</p>
+		</div>
+		<div class="news-content-container">
+		<div class="news-brief">
+			A documentary that aired recently on China’s SNTV channel gives a rare inside look at how bitcoin mining works. 
+		</div>
+		
+		
+		
+		</div>
+	</div>
+
+							
+								
+	<div class="item" data-ks-editable="editable(user, { list: 'News', id: item.id })">
+		<div class="news-image-container">
+			
+				
+					<a href="/news/article/chinas-central-bank-governor-says-digital-currencies-will-inevitably-replace-cash" target="_parent">			<img src="/site/images/uploads/news/56c2eab1430e1e4f61429a1a_1455616015816.jpg" width='236px' height='146px' alt="" /></a>
+				
+			
+		</div>
+		<div class="news-title-container">
+			<p class="news-title">
+                
+                    <a href="/news/article/chinas-central-bank-governor-says-digital-currencies-will-inevitably-replace-cash" target="_parent">China&#39;s Central Bank Governor Says Digital Currencies Will Inevitably Replace Cash</a>
+                
+			</p>
+			<p class="news-time">
+				
+					Feb 16,  2016
+				
+			</p>
+		</div>
+		<div class="news-content-container">
+		<div class="news-brief">
+			Zhou Xiaochuan said that digital currencies will inevitably replace cash.
+		</div>
+		
+		
+		
+		</div>
+	</div>
+
+							
+								
+	<div class="item" data-ks-editable="editable(user, { list: 'News', id: item.id })">
+		<div class="news-image-container">
+			
+				
+					<a href="/news/article/btcc-and-bitcoins-2015" target="_parent">			<img src="/site/images/uploads/news/5685f186ff88ef2a11be9618_1451656679344.jpg" width='236px' height='146px' alt="" /></a>
+				
+			
+		</div>
+		<div class="news-title-container">
+			<p class="news-title">
+                
+                    <a href="/news/article/btcc-and-bitcoins-2015" target="_parent">Bitcoin and BTCC’s 2015</a>
+                
+			</p>
+			<p class="news-time">
+				
+					Jan 01,  2016
+				
+			</p>
+		</div>
+		<div class="news-content-container">
+		<div class="news-brief">
+			Here is a look back at the progress made by BTCC and bitcoin in 2015.
+		</div>
+		
+		
+		
+		</div>
+	</div>
+
+							
+							
+						</div>
+						
+						<div class="pagination text-center col-xs-12">
+							<ul class="pagination">
+								<li class="disabled">
+									<a href="?page=1" target="_parent">
+										<span class="glyphicon">«</span>
+									</a>
+								</li>
+								
+									<li class="disabled">
+										<a href="?page=1" target="_parent">
+											<span class="glyphicon">‹</span>
+										</a>
+									</li>
+                                
+									
+										<li class="active">
+											<a href="?page=1" target="_parent">1</a>
+										</li>
+									
+										<li class="">
+											<a href="?page=2" target="_parent">2</a>
+										</li>
+									
+										<li class="">
+											<a href="?page=3" target="_parent">3</a>
+										</li>
+									
+								
+									<li class="disabled">
+										<a href="?page=2" target="_parent">
+											<span class="glyphicon">›</span>
+										</a>
+									</li>
+								
+								<li class="disabled">
+									<a href="?page=3" target="_parent">
+										<span class="glyphicon">»</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+						
+					
+				
+		</div>
+	</div>
+</div>
+<div class="push"></div>
+		</div>
+
+		
+
+		<div id="reactGeneralFooter"></div>
+		
+
+		
+		<script src="/site/js/jquery-1.11.2.min.js"></script>
+        <script src="/site/js/anchorific.js"></script>
+		
+		<script>
+				function changeLang(lang){
+					 $.get('/news?lang=' + lang +'&_='+Math.random(), {}, function(){
+                        window.location.reload();
+                     })
+				 }
+			</script>
+		
+
+		
+		<script src="/site/js/teams.js"></script>
+		<script src="/site/js/vendor.js"></script>
+		<script src="/site/js/app.js"></script>
+		<script src="https://static.btcc.com/core/coreweb.js"></script>
+        <script src="https://static.btcc.com/core/coreweb-activity.js"></script>
+        <script src="https://static.btcc.com/core/coreweb-footer.js"></script>
+        <script src="https://static.btcc.com/core/coreweb-header.js"></script>
+        <script src="https://static.btcc.com/core/coreweb-notification.js"></script>
+        <script src="https://static.btcc.com/core/coreweb-quotation.js"></script>
+        <script src="https://static.btcc.com/core/coreweb-volume.js"></script>
+		<script src="/site/js/header.js"></script>
+	</body>
 </html>
