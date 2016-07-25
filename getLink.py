@@ -1,8 +1,9 @@
 #encoding: utf8
 
+# Return a set of url links in src page
 def getLink(src):
     source = src.lower()
-    links = []
+    links = set()
     head = 0
     length = len(source)
     flag = True
@@ -14,20 +15,20 @@ def getLink(src):
 
         if (pos1 >= head)and(pos2 >= head):
 
-            print pos1, pos2 ,head
+            # print pos1, pos2 ,head
 
             flag = True
             link = source[pos1 + 6:pos2]
             link = link.replace('\t','')
             link = link.replace('\n','')
             link = link.replace(' ','')
-            links.append(link)
+            links.add(link)
             head = pos2 + 1
 
     # print links[0]
     # print links[1]
-    for i in links:
-        print i
+    # for i in links:
+    #     print i
 
     return links
 
