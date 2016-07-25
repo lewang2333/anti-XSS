@@ -2,7 +2,6 @@
 
 from getLink import getLink
 
-
 def main():
     domain = 'https://www.btcc.com'
     f = open('page.txt','rb')
