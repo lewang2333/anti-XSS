@@ -1,9 +1,12 @@
 #encoding: utf8
 
+# links ia a global set that stroe all of the links in the particular domain.
+links = set()
+
 # Return a set of url links in src page
 def getLink(src):
     source = src.lower()
-    links = set()
+    # links = set()
     head = 0
     length = len(source)
     flag = True
