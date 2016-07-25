@@ -2,10 +2,9 @@
 
 # links ia a global set that stroe all of the links in the particular domain.
 links = set()
-global DOMAIN
 
 # Return a set of url links in src page
-def getLink(src):
+def getLink(src, domain):
     source = src.lower()
     # links = set()
     head = 0
@@ -30,9 +29,9 @@ def getLink(src):
             # Fill up link
             if (link.find('http') == -1):
                 if (link[0] != '/'):
-                    link = DOMAIN + '/' + link
+                    link = domain + '/' + link
                 else:
-                    link = DOMAIN + link
+                    link = domain + link
 
             links.add(link)
             head = pos2 + 1
@@ -44,9 +43,9 @@ def getLink(src):
 
     return links
 
-if __name__ == '__main__':
-    DOMAIN = 'https://www.btcc.com'
-    f = open('page.txt','rb')
-    src = f.read()
-    getLink(src)
-    f.close()
+# if __name__ == '__main__':
+#     DOMAIN = 'https://www.btcc.com'
+#     f = open('page.txt','rb')
+#     src = f.read()
+#     getLink(src)
+#     f.close()
