@@ -26,4 +26,4 @@ def getPage(src):
     return page
 
 if __name__ == '__main__':
-    getPage('http://www.baidu.com')
+    getPage('https://www.btcc.com')
