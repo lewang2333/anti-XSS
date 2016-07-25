@@ -39,12 +39,13 @@ def getLink(src):
 
     # print links[0]
     # print links[1]
-    # for i in links:
-    #     print i
+    for i in links:
+        print i
 
     return links
 
 if __name__ == '__main__':
+    DOMAIN = 'https://www.btcc.com'
     f = open('page.txt','rb')
     src = f.read()
     getLink(src)
