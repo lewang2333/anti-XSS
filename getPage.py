@@ -46,5 +46,5 @@ def getPage(src):
 
     return filename
 
-if __name__ == '__main__':
-    getPage('https://www.btcc.com/news/')
+# if __name__ == '__main__':
+#     getPage('https://www.btcc.com/news/')
