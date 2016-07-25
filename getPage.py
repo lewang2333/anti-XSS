@@ -26,17 +26,25 @@ def getPage(src):
 
     enpostdata = urllib.urlencode(postdata)
     urlrequest = urllib2.Request(hosturl)
-    # urlrequest.add_header(HEADER)
     urlresponse = urllib2.urlopen(urlrequest)
 
     page = urlresponse.read()
     # print page
 
-    f = open('page.txt','w+')
+    filename = src
+    filename = filename.replace('https','')
+    filename = filename.replace('http','')
+    filename = filename.replace(':','')
+    filename = filename.replace('/','')
+    filename = filename.replace('.','')
+    filename = filename + '.pg'
+
+
+    f = open(filename,'w+')
     f.write(page)
     f.close()
 
-    return page
+    return filename
 
 if __name__ == '__main__':
     getPage('https://www.btcc.com/news/')

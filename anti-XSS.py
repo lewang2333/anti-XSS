@@ -1,13 +1,14 @@
 #coding: utf8
 
-from getLink import getLink
+from getLink import *
+from getPage import *
+from findScript import *
 
 def main():
     domain = 'https://www.btcc.com'
-    f = open('page.txt','rb')
-    src = f.read()
-    getLink(src, domain)
-    f.close()
+
+
+    findScript(getPage('https://www.btcc.com/news'),domain)
 
 if __name__ == '__main__':
     main()

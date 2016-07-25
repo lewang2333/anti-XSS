@@ -93,4 +93,7 @@ ENV/
 
 # Data file
 .ax
+.lk
+.pg
+.sp
 

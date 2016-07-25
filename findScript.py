@@ -1,5 +1,9 @@
-def findScript(page):
-    source = page.lower()
+def findScript(filename,domain):
+
+    f = open(filename,'rb')
+    source = f.read().lower()
+    f.close()
+
     payloads = []
     head = 0
     length = len(source)
@@ -17,4 +21,9 @@ def findScript(page):
             payloads.append(payload)
             head = pos2 + 10
 
-    return payloads
+    f = open(filename.replace('.pg','.sp'),'w+')
+    for i in payloads:
+        f.write(i + '\n')
+    f.close()
+
+    return filename.replace('.pg','.sp')

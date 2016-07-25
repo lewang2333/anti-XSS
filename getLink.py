@@ -4,8 +4,10 @@
 links = set()
 
 # Return a set of url links in src page
-def getLink(src, domain):
-    source = src.lower()
+def getLink(filename, domain):
+    f = open(filename,'rb')
+    source = f.read().lower()
+    f.close()
     # links = set()
     head = 0
     length = len(source)
@@ -38,10 +40,12 @@ def getLink(src, domain):
 
     # print links[0]
     # print links[1]
+    f = open(filename.replace('.pg','.lk'),'w+')
     for i in links:
-        print i
+        f.write(i + '\n')
+    f.close()
 
-    return links
+    return filename.replace('.pg','.lk')
 
 # if __name__ == '__main__':
 #     DOMAIN = 'https://www.btcc.com'
