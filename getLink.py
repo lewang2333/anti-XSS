@@ -2,6 +2,7 @@
 
 # links ia a global set that stroe all of the links in the particular domain.
 links = set()
+global DOMAIN
 
 # Return a set of url links in src page
 def getLink(src):
@@ -25,6 +26,14 @@ def getLink(src):
             link = link.replace('\t','')
             link = link.replace('\n','')
             link = link.replace(' ','')
+
+            # Fill up link
+            if (link.find('http') == -1):
+                if (link[0] != '/'):
+                    link = DOMAIN + '/' + link
+                else:
+                    link = DOMAIN + link
+
             links.add(link)
             head = pos2 + 1
 
