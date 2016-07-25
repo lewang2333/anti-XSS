@@ -36,7 +36,7 @@
 </script>
 
             
-                 <title>BTCC - 您的比特币公司</title>
+                 <title>BTCC - Your Bitcoin Company</title>
 
     		
 
@@ -186,33 +186,6 @@
                  
                  	
                    
-					   olark.configure("locale.welcome_title", "点击这里");
-					   olark.configure("locale.chatting_title", "开始聊天");
-					   olark.configure("locale.unavailable_title", "实时帮助：离线");
-					   olark.configure("locale.away_message", "我们当前的实时帮助功能处于离线状态，请稍后重新尝试");
-					   olark.configure("locale.welcome_message", "欢迎来到BTCC，现在开始咨询");
-					   olark.configure("locale.chat_input_text", "点击这里开始聊天");
-					   olark.configure("locale.name_input_text", "<点击这里> 输入你的名字");
-					   olark.configure("locale.email_input_text", "<点击这里> 输入你的邮箱");
-					   olark.configure("locale.phone_input_text", "<点击这里> 输入你的手机号");
-					   olark.configure("locale.offline_note_message", "离线中，请发送离线信息");
-					   olark.configure("locale.send_button_text", "发送");
-					   olark.configure("locale.offline_note_thankyou_text", "感谢你的信息，我们会尽快与你联系");
-					   olark.configure("locale.offline_note_error_text", "你必须完成所有选项，并指定一个可用邮箱");
-					   olark.configure("locale.offline_note_sending_text", "发送中。。。");
-					   olark.configure("locale.operator_is_typing_text", "输入中。。。");
-					   olark.configure("locale.operator_has_stopped_typing_text", "已经停止输入");
-					   olark.configure("locale.introduction_error_text", "请留下一个名字和邮箱，以防断线后我们能与你取得联系");
-					   olark.configure("locale.introduction_messages", "欢迎来到BTCC!</BR>请填写基本信息然后开始聊天");
-					   olark.configure("locale.introduction_submit_button_text", "开始聊天");
-					   olark.configure("locale.disabled_input_text_when_convo_has_ended", "聊天结束，刷新重新开始聊天。");
-					   olark.configure("locale.disabled_panel_text_when_convo_has_ended", "当前聊天已经结束，您只需要刷新页面就可以重新开始聊天。");
-					   
-					   // This message is sent when using chat limits per operators
-					   olark.configure("locale.ended_chat_message", "This conversation has ended.");                   
-					   
-                 	
-                   
                    
                                       
                    
@@ -258,46 +231,46 @@
 				<div class="authentication">
 					<div class="front">
 							<div class="auth-header">
-								<h1>登录</h1>
+								<h1>SIGN IN</h1>
 							</div>
 							<form name="formLogin" id="sign_in_form" novalidate>
 								<div class="form-item">
-									<label>用户名/邮箱</label>
+									<label>Username/Email</label>
 									<input name="username" type="text" autofocus required class="form-control" ng-class="{'red-border': invalidUser}" ng-model="user.username" ng-change="usernameChanged()" ng-focus="focusInput($event)" ng-blur="unfocusInput($event)">
 								</div>
 								<div class="form-item">
-									<label>密码</label>
+									<label>Password</label>
 									<input name="password" type="password" required class="form-control"  ng-class="{'red-border': invalidUser}" enter-key="login(user);"  ng-model="user.password" ng-change="invalidUser = false"  ng-focus="focusInput($event)" ng-blur="unfocusInput($event)">
-									<a class="forgot-password" href="[[site]]/#/forgot-password" target="_blank">忘记密码?</a>
+									<a class="forgot-password" href="[[site]]/#/forgot-password" target="_blank">Forget Password?</a>
 								</div>
 								<div class="error_box">
 									<div class="error" ng-show="(formLogin.username.$dirty && formLogin.password.$dirty)">
 									</div>
 									<div class="error invalid-user" ng-show="invalidUser">
-										用户名或密码错误。
+										Username or password is incorrect, please try again.
 									</div>
 									<div class="error wrong-captcha" ng-show="wrongCaptcha">
-										验证码错误。
+										Captcha is incorrect, please try again.
 									</div>
 									<div class="error need-captcha" ng-show="needCaptcha">
-										请输入验证码
+										Please input verification code
 									</div>
 									<div class="error locked" ng-show="userLocked">
-										您的账户因安全问题被临时锁定3个小时，锁定过后系统将为您自动解锁。
+										Your account has been temporarily locked for 3 hours because of security issues, after that system will unlock your account automatically. 
 										<span class="close" ng-click="userLocked=false"></span>
 									</div>
 									<div class="error locked" ng-show="systemError">
-										系统繁忙，请稍后再试。
+										Our system is currently busy. Please try again later.
 										<span class="close" ng-click="systemError=false"></span>
 									</div>
 									<div class="error locked" ng-show="lockedForever">
-										您的账户已被锁定，请联系客服：support@btcc.com。
+										Your account has been locked. Please contact us at support@btcc.com for more information.
 									
 										<span class="close" ng-click="lockedForever=false"></span>
 									</div>
 								</div>
 								<div class="form-item inline-item captcha-input" ng-show="showCaptcha">
-									<label>验证码</label>
+									<label>Captcha</label>
 									<input name="captcha" type="text" ng-pattern="digital" required  class="form-control" ng-class="{'red-border': wrongCaptcha}" ng-model="user.captcha" enter-key="login(user);" ng-change="captchaChanged()"  ng-minlength="4" ng-maxlength="4"  ng-focus="focusInput($event)" ng-blur="unfocusInput($event)"/>
 								</div>
 								<div class="form-item inline-item captcha-img" ng-show="showCaptcha">
@@ -305,8 +278,8 @@
 										<img ng-src="[[captchaUrl]]" alt="captcha" class="captcha" ng-click="refreshCaptcha()">
 										<span class="ci-icon-uniE810" ng-click="refreshCaptcha()"></span>
 								</div>
-								<div class="checkbox-item"> <label class="ng-binding"><input type="checkbox" ng-model="user.keepLogin" class="ng-pristine ng-untouched ng-valid">记住我</label> </div>
-									<a id="padding:15px;" class="btn btn-blue" style="width: 100%" ng-click="login(user)" ng-disabled="[[wrongCaptcha || needCaptcha || invalidUser || wrongGaCode]]">登录
+								<div class="checkbox-item"> <label class="ng-binding"><input type="checkbox" ng-model="user.keepLogin" class="ng-pristine ng-untouched ng-valid">Keep me signed in on this computer</label> </div>
+									<a id="padding:15px;" class="btn btn-blue" style="width: 100%" ng-click="login(user)" ng-disabled="[[wrongCaptcha || needCaptcha || invalidUser || wrongGaCode]]">SIGN IN
 									<span class="spinner" ng-if="showLoginSpinner"></span>
 									</a>
 							</form>
@@ -314,27 +287,27 @@
 					 <!--two-->
 	        <div class="back">
 	        	<p class="google-auth-header">
-	        		登录双重验证
+	        		Login two-factor authentication
 	        		<a class="back-to-signin" ng-click="backToSignin()"><i class="ci-icon-uniE8D1"></i></a>
 	        	</p>
-	        	<p class="google-auth-note">您的账户已设置双重验证,请确认以下信息。</p>
+	        	<p class="google-auth-note">Your account has enabled login two-factor authentication, please confirm the following information.</p>
 						<form autocomplete="off" name="formLogin" novalidate id="ga_sigin_in_form">
 							<div class="cannot-verify">
-								<a ng-click="disableLoginAuth()">无法验证?</a>	
+								<a ng-click="disableLoginAuth()">Cannot verify?</a>	
 							</div>
 							<div class="form-group">
-								<input type="tel" autofocus ng-pattern="digital" class="form-control"  name="Pin" ng-model="user.pin" enter-key="confirm(user)"  ng-change="gaCodeChanged()" placeholder="请输入6位谷歌验证码。">
+								<input type="tel" autofocus ng-pattern="digital" class="form-control"  name="Pin" ng-model="user.pin" enter-key="confirm(user)"  ng-change="gaCodeChanged()" placeholder="Enter the 6 digit Google Authenticator Code">
 							</div>
 							<div ng-show="emailSent" class="email-sent">
-								<p>确认邮件已发送到您的邮箱地址 [[email]],请点击邮件中的链接来关闭登录双重验证。</p>
-								<p class="not-recive">[[resendCountdown]]秒后如果还未收到邮件,请尝试 		
-								<a class="resend" ng-click="resendEmail()" ng-disabled="resendCountdown">重新发送邮件</p></a></p>
+								<p>We have sent a confirmation email to your mailbox [[email]], please click the link in the email to disable two-factor authentication.</p>
+								<p class="not-recive">after [[resendCountdown]]s,If cannot receive email		
+								<a class="resend" ng-click="resendEmail()" ng-disabled="resendCountdown">Resend email</p></a></p>
 							</div>
 							<div class="error_box">
-								<div class="error" ng-show="wrongGaCode">双重验证错误。
+								<div class="error" ng-show="wrongGaCode">Two factor error.
 								</div>
 							</div>
-							<a id="google-auth-button" ng-click="confirm(user)" ng-disabled="wrongGaCode">确认</a>
+							<a id="google-auth-button" ng-click="confirm(user)" ng-disabled="wrongGaCode">Confirm</a>
 						</form>
 	        </div>				
         </div>
@@ -371,7 +344,7 @@ canvas {
 		
 		</div>
 		<div class="news-text">
-			<p>新闻</p>
+			<p>NEWS</p>
 		</div>
 	</div>
 	
@@ -401,18 +374,18 @@ canvas {
 		<div class="news-title-container">
 			<p class="news-title">
                 
-                    <a href="/news/article/btcc-spot-exchange-margin-loans" target="_parent">BTCC现货交易借贷手续费收取方式调整 </a>
+                    <a href="/news/article/btcc-spot-exchange-margin-loans" target="_parent">BTCC Spot Exchange Margin Loan Interest Payment Changes</a>
                 
 			</p>
 			<p class="news-time">
 				
-					2016-07-21
+					Jul 21,  2016
 				
 			</p>
 		</div>
 		<div class="news-content-container">
 		<div class="news-brief">
-			
+			 BTCC will implement changes to the Spot Exchange margin loan system at 12:00 AM (UTC+8) on August 1st.
 		</div>
 		
 		
@@ -433,18 +406,18 @@ canvas {
 		<div class="news-title-container">
 			<p class="news-title">
                 
-                    <a href="/news/article/btcc-pool-fee-update" target="_parent">BTCC矿池费率机制调整</a>
+                    <a href="/news/article/btcc-pool-fee-update" target="_parent">BTCC Pool Fee Update</a>
                 
 			</p>
 			<p class="news-time">
 				
-					2016-07-10
+					Jul 10,  2016
 				
 			</p>
 		</div>
 		<div class="news-content-container">
 		<div class="news-brief">
-			“一切以矿工思考，一切为矿工服务”的BTCC矿池会在减半后，立即调整对应各级费率的比特币收益要求，施行新的矿池费率机制。同时，各级费率将不再受绑定比特币钱包所属的影响。
+			BTCC Pool adopted a new fee structure after the second bitcoin block halving on July 10th. Miners will now enjoy a simplified and more favorable fee structure. 
 		</div>
 		
 		
@@ -465,18 +438,18 @@ canvas {
 		<div class="news-title-container">
 			<p class="news-title">
                 
-                    <a href="/news/article/btcc-introduces-titanium-collectible-containing-full-bitcoin-block" target="_parent">BTCC推出包含完整比特币区块的纯钛藏品</a>
+                    <a href="/news/article/btcc-introduces-titanium-collectible-containing-full-bitcoin-block" target="_parent">BTCC Introduces Titanium Collectible Containing Full Bitcoin Block</a>
                 
 			</p>
 			<p class="news-time">
 				
-					2016-06-30
+					Jun 30,  2016
 				
 			</p>
 		</div>
 		<div class="news-content-container">
 		<div class="news-brief">
-			BTCC今天推出了全球第一且唯一的实体比特币区块——比特块，每个比特块内包含一整个未经流通的区块奖励。
+			BTCC today announced the release of a new series of titanium collectibles that each contain an entire bitcoin block. The Bitcoin Block is the world’s first physical bitcoin product to contain the full uncirculated block reward.
 		</div>
 		
 		
@@ -497,18 +470,18 @@ canvas {
 		<div class="news-title-container">
 			<p class="news-title">
                 
-                    <a href="/news/article/btccs-firsts" target="_parent">BTCC的第一</a>
+                    <a href="/news/article/btccs-firsts" target="_parent">BTCC&#39;s Firsts</a>
                 
 			</p>
 			<p class="news-time">
 				
-					2016-06-09
+					Jun 09,  2016
 				
 			</p>
 		</div>
 		<div class="news-content-container">
 		<div class="news-brief">
-			今天是BTCC五岁生日！现在就和我们一起来看看BTCC的那些第一。
+			Today, June 9th, is BTCC's fifth anniversary. To celebrate the occasion, we made a graphic that looks at BTCC's innovations since June 2011.
 		</div>
 		
 		
@@ -529,18 +502,18 @@ canvas {
 		<div class="news-title-container">
 			<p class="news-title">
                 
-                    <a href="/news/article/btcc-launches-five-bitcoin-titanium-coin-on-fifth-anniversary" target="_parent">BTCC值五周年庆推出纯钛伍比特币</a>
+                    <a href="/news/article/btcc-launches-five-bitcoin-titanium-coin-on-fifth-anniversary" target="_parent">BTCC Launches Five Bitcoin Titanium Coin on Fifth Anniversary</a>
                 
 			</p>
 			<p class="news-time">
 				
-					2016-06-08
+					Jun 08,  2016
 				
 			</p>
 		</div>
 		<div class="news-content-container">
 		<div class="news-brief">
-			今天BTCC推出了新版实体币庆祝其五周年。BTCC Mint 2016年V系列 伍比特币为纯钛制成的实体比特币，直径50毫米，厚5毫米。
+			BTCC today introduced a new set of physical bitcoins to celebrate its fifth anniversary. The 2016 V Series Five Bitcoin is a 50 mm diameter physical bitcoin, 5 mm thick, struck in pure titanium.
 		</div>
 		
 		
@@ -561,18 +534,18 @@ canvas {
 		<div class="news-title-container">
 			<p class="news-title">
                 
-                    <a href="/news/article/btcc-today-launched-titanium-physical-bitcoins" target="_parent">BTCC Mint比特币震撼来袭</a>
+                    <a href="/news/article/btcc-today-launched-titanium-physical-bitcoins" target="_parent">BTCC Launches Titanium Physical Bitcoins</a>
                 
 			</p>
 			<p class="news-time">
 				
-					2016-05-26
+					May 26,  2016
 				
 			</p>
 		</div>
 		<div class="news-content-container">
 		<div class="news-brief">
-			BTCC今天发布了钛金属实体比特币。BTCC Mint是业内第一种存有直接来自区块奖励比特币的实体币。"2016壹比特币V系列"是"BTCC Mint比特币"中的首发系列，由金属钛材质精密铸造而成，附有价值一个比特币的私钥在其中。
+			BTCC today introduced its new line of titanium physical bitcoins. BTCC Mint is the first in the industry to offer physical coins with uncirculated bitcoins. The inaugural issue of BTCC Mint coins is the 2016 One Bitcoin V Series, a titanium physical bitcoin with a private key worth one bitcoin attached to it.
 		</div>
 		
 		
@@ -593,18 +566,18 @@ canvas {
 		<div class="news-title-container">
 			<p class="news-title">
                 
-                    <a href="/news/article/btcc-pool-today-launched-international-service" target="_parent">BTCC矿池推出国际矿池服务</a>
+                    <a href="/news/article/btcc-pool-today-launched-international-service" target="_parent">BTCC Pool Launches International Service</a>
                 
 			</p>
 			<p class="news-time">
 				
-					2016-04-22
+					Apr 22,  2016
 				
 			</p>
 		</div>
 		<div class="news-content-container">
 		<div class="news-brief">
-			BTCC矿池宣布推出国际矿池服务，这是一个基于发展战略的举措，也是一个令人振奋的消息。这项服务的推出，让世界各地的矿工可以便捷地连接到BTCC国际矿池服务器进行挖矿。
+			BTCC Pool is happy to announce the launch of its international service. The mining pool deployed servers in strategic locations that enable its customers to rapidly connect to the pool from all seven continents.
 		</div>
 		
 		
@@ -625,18 +598,18 @@ canvas {
 		<div class="news-title-container">
 			<p class="news-title">
                 
-                    <a href="/news/article/bitcoin-mining-documentary-aired-in-china" target="_parent">比特币挖矿纪录片流出</a>
+                    <a href="/news/article/bitcoin-mining-documentary-aired-in-china" target="_parent">Bitcoin Mining Documentary Aired in China</a>
                 
 			</p>
 			<p class="news-time">
 				
-					2016-04-01
+					Apr 01,  2016
 				
 			</p>
 		</div>
 		<div class="news-content-container">
 		<div class="news-brief">
-			最近从中国权威媒体SNTV流出了一部关于比特币挖矿的内部纪录片。
+			A documentary that aired recently on China’s SNTV channel gives a rare inside look at how bitcoin mining works. 
 		</div>
 		
 		
@@ -657,18 +630,18 @@ canvas {
 		<div class="news-title-container">
 			<p class="news-title">
                 
-                    <a href="/news/article/chinas-central-bank-governor-says-digital-currencies-will-inevitably-replace-cash" target="_parent">中国人民银行行长周小川认为数字货币必然要取代纸币</a>
+                    <a href="/news/article/chinas-central-bank-governor-says-digital-currencies-will-inevitably-replace-cash" target="_parent">China&#39;s Central Bank Governor Says Digital Currencies Will Inevitably Replace Cash</a>
                 
 			</p>
 			<p class="news-time">
 				
-					2016-02-16
+					Feb 16,  2016
 				
 			</p>
 		</div>
 		<div class="news-content-container">
 		<div class="news-brief">
-			周小川认为数字货币必将取代纸币。
+			Zhou Xiaochuan said that digital currencies will inevitably replace cash.
 		</div>
 		
 		
@@ -689,18 +662,18 @@ canvas {
 		<div class="news-title-container">
 			<p class="news-title">
                 
-                    <a href="/news/article/btcc-and-bitcoins-2015" target="_parent">比特币和BTCC的2015</a>
+                    <a href="/news/article/btcc-and-bitcoins-2015" target="_parent">Bitcoin and BTCC’s 2015</a>
                 
 			</p>
 			<p class="news-time">
 				
-					2016-01-01
+					Jan 01,  2016
 				
 			</p>
 		</div>
 		<div class="news-content-container">
 		<div class="news-brief">
-			比特币及BTCC在2015年度所取得的成绩回顾。
+			Here is a look back at the progress made by BTCC and bitcoin in 2015.
 		</div>
 		
 		
