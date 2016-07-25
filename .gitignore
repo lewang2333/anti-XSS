@@ -91,3 +91,6 @@ ENV/
 # Text file
 .txt
 
+# Data file
+.ax
+
