@@ -96,3 +96,6 @@ ENV/
 .lk
 .pg
 .sp
+
+# Temp file
+temp/

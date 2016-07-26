@@ -1,4 +1,5 @@
 #coding: utf8
+import os
 import urllib
 import urllib2
 
@@ -10,7 +11,7 @@ links = []
 domain = 'https://www.btcc.com/news'
 
 def createFile(countPage):
-    fileName = '/tmp/' + str(countPage)
+    fileName = 'temp/' + str(countPage)
     return fileName
 
 def alreadyExist(link):
@@ -53,20 +54,30 @@ def completeLink(link, hostUrl, domain):
 
 # 传入一个list文件，包含所有等根域名
 def getPage(urlList):
+    global countPage
     # 把根域名加进队列
     links.append(urlList)
     # 先得到根域名的html文件
     for hostUrl in links:
         countPage = countPage + 1
-        urlRequest = urllib2.request(hostUrl)
+        HEADER = {
+            'Host': 'www.btcc.com',
+            'Cache-Control': 'max-age=0',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Encoding': 'gzip, deflate, sdch, br',
+            'Accept-Language': 'zh-CN,zh;q=0.8,en;q=0.6',
+        }
+        urlRequest = urllib2.Request(hostUrl)
         urlResponse = urllib2.urlopen(urlRequest)
-        htmlSource = urlRequest.read()
+        htmlSource = urlResponse.read()
         # 把html源码写入文件中
-        fileName = createFile(countpage)
+        fileName = createFile(countPage)
         outputFile = open(fileName, 'w+')
         outputFile.write(htmlSource)
         outputFile.close()
         # 写入完成
+        return urlList
 
         # 获取page中的链接
         htmlSource = htmlSource.lower()
@@ -84,10 +95,12 @@ def getPage(urlList):
                 link = formalizeLink(link)
                 # 链接补全
                 link = complete(link, hostUrl, domain)
-                if isLink(link) and (!alreadyExist(link)):
+                if isLink(link) and (not alreadyExist(link)):
                      links.add(link)
                 pointer = tailPos + 1
 
 # 单元测试
 if __name__ == '__main__':
+    if not os.path.exists('temp/'):
+        os.mkdir(r'temp/')
     getPage('https://www.btcc.com/news')
