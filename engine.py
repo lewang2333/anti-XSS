@@ -8,7 +8,7 @@ countPage = 0
 # 所有扫描到的链接
 links = []
 # TODO: 把domain定义成全局变量
-domain = 'https://www.btcc.com/news'
+domain = 'https://www.btcc.com'
 
 def createFile(countPage):
     fileName = 'temp/' + str(countPage)
@@ -26,7 +26,7 @@ def getFatherUrl(url):
     return fatherUrl
 
 def isLink(link):
-    if (link.find('btcc') > -1) and (link.find('.png') == -1):
+    if (link.find('btcc') > -1) and (link.find('.png') == -1) and (link.find('.css') == -1) and (link.find('forg') == -1):
         return True
     return False
 
@@ -35,20 +35,21 @@ def formalizeLink(link):
     formalizedLink = formalizedLink.replace('\t','')
     formalizedLink = formalizedLink.replace('\n','')
     formalizedLink = formalizedLink.replace(' ','')
+    if formalizedLink[len(formalizedLink) - 1] == '/':
+        formalizedLink = formalizedLink[:len(formalizedLink) - 1]
     return formalizedLink
 
 def completeLink(link, hostUrl, domain):
     completedLink = link
     if completedLink.find('[[site]]') != -1:
         completedLink = completedLink.replace('[[site]]',domain)
-        # TODO: 参数domain的传递
     elif (completedLink.find('http') == -1):
         if (completedLink[0] == '?'):
             completedLink = hostUrl + completedLink
         elif (completedLink[0] != '/'):
             completedLink = hostUrl + '/' + completedLink
         else:
-            completedLink = upperUrl(hostUrl) + completedLink
+            completedLink = domain + completedLink
     return completedLink
 
 
@@ -60,6 +61,11 @@ def getPage(urlList):
     # 先得到根域名的html文件
     for hostUrl in links:
         countPage = countPage + 1
+        print 'This is the times: ' + str(countPage)
+        if countPage == 30:
+            # for i in links:
+            #     print i
+            return
         HEADER = {
             'Host': 'www.btcc.com',
             'Cache-Control': 'max-age=0',
@@ -72,12 +78,13 @@ def getPage(urlList):
         urlResponse = urllib2.urlopen(urlRequest)
         htmlSource = urlResponse.read()
         # 把html源码写入文件中
+        '''
         fileName = createFile(countPage)
-        outputFile = open(fileName, 'w+')
+        outputFile = open(fileName, 'w')
         outputFile.write(htmlSource)
         outputFile.close()
+        '''
         # 写入完成
-        return urlList
 
         # 获取page中的链接
         htmlSource = htmlSource.lower()
@@ -94,13 +101,18 @@ def getPage(urlList):
                 # 格式化链接
                 link = formalizeLink(link)
                 # 链接补全
-                link = complete(link, hostUrl, domain)
+                link = completeLink(link, hostUrl, domain)
                 if isLink(link) and (not alreadyExist(link)):
-                     links.add(link)
-                pointer = tailPos + 1
+                     links.append(link)
+                    #  print link
+            pointer = tailPos + 1
 
 # 单元测试
 if __name__ == '__main__':
     if not os.path.exists('temp/'):
         os.mkdir(r'temp/')
     getPage('https://www.btcc.com/news')
+    f = open('links.txt','w')
+    for i in links:
+        f.write(i + '\n')
+    f.close()
