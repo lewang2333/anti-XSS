@@ -1,3 +1,0 @@
-# XSS Scan Result
-## High Vulnerable Level Script
-## Mid Vulnerable Level Script
