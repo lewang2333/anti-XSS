@@ -11,7 +11,7 @@ def main():
 
     getLink(getPage(target),target)
 
-    # xssScanner(findScript(getPage('https://staging.btcc.com/news'),domain))
+    xssScanner(findScript(getPage('https://staging.btcc.com/news'),domain))
 
 if __name__ == '__main__':
     main()
