@@ -118,12 +118,40 @@ def getPage(urlList):
                     #  print link
             pointer = tailPos + 1
 
+def getScript():
+    payloads = []
+    global countPage
+    '''
+    调试代码
+    countPage = 10
+    '''
+    for i in range(0, countPage - 1):
+        fileName = 'temp/' + str(i + 1)
+        inputFile = open(fileName, 'r')
+        source = inputFile.read()
+
+        head = 0
+        length = len(source)
+        flag = True
+        while ((flag) and (head < length)):
+            flag = False
+            pos1 = source[head:].find('<script') + head
+            pos2 = source[head:].find('</script>') + head
+            if (pos1 >= head)and(pos2 >= head):
+                flag = True
+                payload = source[pos1:pos2 + 9]
+                payload = payload.replace('\t','')
+                payload = payload.replace('\n','')
+                payload = payload.replace(' ','')
+                payloads.append(payload)
+                head = pos2 + 10
+        inputFile.close()
+    for j in payloads:
+        print j
+
 # 单元测试
 if __name__ == '__main__':
-    if not os.path.exists('temp/'):
-        os.mkdir(r'temp/')
-    getPage('https://www.btcc.com/news')
-    f = open('temp/links.txt','w')
-    for i in links:
-        f.write(i + '\n')
-    f.close()
+    # if not os.path.exists('temp/'):
+    #     os.mkdir(r'temp/')
+    # getPage('https://www.btcc.com/news')
+    getScript()
