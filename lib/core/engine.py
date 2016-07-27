@@ -9,6 +9,10 @@ countPage = 0
 links = []
 # TODO: 把domain定义成全局变量
 domain = 'https://www.btcc.com'
+# 所有的js脚本
+payloads = []
+# 所有的XSS威胁
+result = []
 
 def createFile(countPage):
     fileName = 'temp/' + str(countPage)
@@ -119,7 +123,7 @@ def getPage(urlList):
             pointer = tailPos + 1
 
 def getScript():
-    payloads = []
+    global payloads
     global countPage
     '''
     调试代码
@@ -149,9 +153,32 @@ def getScript():
     for j in payloads:
         print j
 
+def xssScanner():
+    global payloads
+    global result
+
+    for payload in payloads:
+        # case 0: safe; 1: notsafe;
+        if (payload.find('cookie') > -1):
+            case = 1
+        else:
+            case = 0
+        result.append((payload, case))
+
+    f2 = open('temp/result.md','w')
+    f2.write('# XSS Scan Result\n')
+    f2.write('## Found XSS Vulnerability\n```javascript\n')
+    for i in result:
+        if i[1] == 1:
+            f2.write(i[0] + '\n')
+    f2.write('```\n')
+    f2.close()
+
+
 # 单元测试
 if __name__ == '__main__':
     # if not os.path.exists('temp/'):
     #     os.mkdir(r'temp/')
     # getPage('https://www.btcc.com/news')
     getScript()
+    xssScanner()
