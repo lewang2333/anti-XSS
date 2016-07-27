@@ -8,7 +8,8 @@ temp/
 
 # Binary file
 *.pyc
+*/*.pyc
+*/*/*.pyc
 
 # Bash file
 *.sh
-
