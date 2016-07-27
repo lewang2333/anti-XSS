@@ -3,12 +3,10 @@
 from lib.parse.cmdline import cmdLineParser
 
 def main():
-    '''
-    main函数
-    '''
-    cmdLineParser()
-
-
+    try:
+        cmdLineParser()
+    except Exception as e:
+        print e
 
 if __name__ == '__main__':
     main()
