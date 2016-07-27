@@ -141,13 +141,6 @@ def getScript():
             pos1 = source[head:].find('<script') + head
             pos2 = source[head:].find('</script>') + head
             if (pos1 >= head)and(pos2 >= head):
-                # flag = True
-                # payload = source[pos1:pos2 + 9]
-                # payload = payload.replace('\t','')
-                # payload = payload.replace('\n','')
-                # payload = payload.replace(' ','')
-                # payloads.append(payload)
-                # head = pos2 + 10
                 flag = True
                 tempString = source[pos1:pos2 + 9]
                 tempString = tempString.replace('\t','')
@@ -167,17 +160,14 @@ def xssScanner():
     for payload in payloads:
         # case 0: safe; 1: notsafe;
         if (payload.find('cookie') > -1):
-            case = 1
-        else:
-            case = 0
-        result.append((payload, case))
+            payload.setDanger(True)
+        result.append(payload)
 
     f2 = open('temp/result.md','w')
     f2.write('# XSS Scan Result\n')
     f2.write('## Found XSS Vulnerability\n```javascript\n')
     for i in result:
-        if i[1] == 1:
-            f2.write(i[0] + '\n')
+        f2.write(i.getPayload())
     f2.write('```\n')
     f2.close()
 
