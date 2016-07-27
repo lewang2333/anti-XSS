@@ -160,7 +160,7 @@ def xssScanner():
     for payload in payloads:
         if (payload.find('cookie') > -1):
             payload.setDanger(True)
-        result.append(payload)
+            result.append(payload)
 
     f2 = open('temp/result.md','w')
     f2.write('# XSS Scan Result\n')

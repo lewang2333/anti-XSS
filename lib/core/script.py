@@ -1,5 +1,6 @@
 
 class Script(object):
+    
     __payload = ''
     __fromDomain = ''
     __danger = False
