@@ -38,5 +38,5 @@ To get an overview of anti-XSS capabilities, list of supported features and desc
 
 # Acknowledgement
 
-* Project implementation promoting: Mikael Wang
+* Implementation promoting: Mikael Wang
 * Technical support: [Jamie Cheng](https://github.com/starit), [Zeyu Chen](https://github.com/xinyifly), [Yang Yang](https://github.com/reliveyy), Bzn, [Thomas Yu](https://github.com/wenqingyu)
