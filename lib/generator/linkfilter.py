@@ -1,12 +1,12 @@
-#coding: utf8
+#coding:utf8
 
-class XssPayload(object):
+class LinkFilter(object):
     """docstring for """
     __list = []
 
     def __init__(self):
         try:
-            f = open('lib/payload/xsspayload.dic', 'r')
+            f = open('lib/payload/linkfilter.dic', 'r')
             payload = f.readline()
             while payload != '':
                 self.__list.append(payload)
@@ -15,10 +15,10 @@ class XssPayload(object):
             f.close()
         except Exception as e:
             print ('''
-Error: No XSS payload file in lib/payload/xsspayload.dic
-You should put your own dictionary file in lib/payload/
+Error: No link filter file in lib/payload/linkfilter.dic
+You should put your own filter file in lib/payload/
             ''')
             exit()
 
-    def getXssPayload(self):
+    def getLinkFilter(self):
         return self.__list

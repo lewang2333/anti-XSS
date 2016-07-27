@@ -3,11 +3,12 @@ import os
 import urllib
 import urllib2
 
-from lib.generator.xsspayload import XssPayload
 from script import Script
-from lib.core.countpage import CountPage
 from lib.core.link import Link
+from lib.core.countpage import CountPage
 from lib.generator.report import gnrReport
+from lib.generator.linkfilter import LinkFilter
+from lib.generator.xsspayload import XssPayload
 
 # 网页个数
 countPage = CountPage(0)
@@ -36,21 +37,14 @@ def getFatherUrl(url):
     return fatherUrl
 
 def isLink(link):
-    if (link.find('page') > -1):
-        pos = link.find('page')
-        if (link[pos+1:].find('page') > -1):
+    # TODO: There may meet a problem when there is a couple of same keywords in the url;
+
+    filterList = LinkFilter().getLinkFilter()
+    for filterString in filterList:
+        if link.find(filterString) != -1:
             return False
-    if (link.find('javascript') > -1):
-        return False
-    if (link.find('google') > -1):
-        return False
-    if (link.find('twitter') > -1):
-        return False
-    if (link.find('help?') > -1):
-        return False
-    if (link.find('btcc') > -1) and (link.find('.png') == -1) and (link.find('.css') == -1) and (link.find('forg') == -1):
-        return True
-    return False
+
+    return True
 
 def formalizeLink(link):
     formalizedLink = link
