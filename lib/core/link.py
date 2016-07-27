@@ -27,4 +27,6 @@ class Link(object):
 
     def setPage(self, page):
         self.__page = page
-        
+
+    def toString(self):
+        return 'url= ' + self.__url + '\ndomain= ' + self.__domain + '\npage= ' + self.__page 

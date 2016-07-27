@@ -2,10 +2,13 @@
 import os
 import urllib
 import urllib2
+
 from script import Script
+from lib.core.countpage import CountPage
+from lib.core.link import Link
 
 # 网页个数
-countPage = 0
+countPage = CountPage(0)
 # 所有扫描到的链接
 links = []
 # TODO: 把domain定义成全局变量
@@ -20,8 +23,11 @@ def createFile(countPage):
     return fileName
 
 def alreadyExist(link):
-    if link in links:
-        return True
+    for iLink in links:
+        if link.getUrl() == iLink.getUrl():
+            return True
+    # if link in links:
+    #     return True
     return False
 
 def getFatherUrl(url):
@@ -80,30 +86,35 @@ def completeLink(link, hostUrl, domain):
 
 
 # 传入一个list文件，包含所有等根域名
-def getPage(urlList):
+def getPage(rootLink):
     global countPage
+    # 如果没有temp目录就建立
+    if not os.path.exists('temp/'):
+        os.mkdir(r'temp/')
     # 把根域名加进队列
-    links.append(urlList)
+    links.append(rootLink)
     # 先得到根域名的html文件
-    for hostUrl in links:
-        countPage = countPage + 1
-        # print 'This is the times: ' + str(countPage)
-        if countPage == 10:
-            # for i in links:
-            #     print i
+    for link in links:
+        countPage.incNumber()
+        if countPage.getNumber() == 3:
             return
-        urlRequest = urllib2.Request(hostUrl)
+        urlRequest = urllib2.Request(link.getUrl())
         urlResponse = urllib2.urlopen(urlRequest)
-        htmlSource = urlResponse.read()
+
         # 把html源码写入文件中
-        fileName = createFile(countPage)
-        outputFile = open(fileName, 'w')
-        outputFile.write(htmlSource)
-        outputFile.close()
+        # fileName = createFile(countPage.getNumber())
+        # outputFile = open(fileName, 'w')
+        # outputFile.write(htmlSource)
+        # outputFile.close()
         # 写入完成
 
+        # 把html源码写进Link类的__page中
+        link.setPage(urlResponse.read())
+        # 写入完成
+
+
         # 获取page中的链接
-        htmlSource = htmlSource.lower()
+        htmlSource = link.getPage().lower()
         pointer = 0
         pageLength = len(htmlSource)
         isAnyScript = True
@@ -113,14 +124,15 @@ def getPage(urlList):
             tailPos = htmlSource[headPos + 7:].find('"') + headPos + 7
             if (headPos >= pointer) and (tailPos >= pointer):
                 isAnyScript = True
-                link = htmlSource[headPos + 6:tailPos]
+                newUrl = htmlSource[headPos + 6:tailPos]
                 # 格式化链接
-                link = formalizeLink(link)
+                newUrl = formalizeLink(newUrl)
                 # 链接补全
-                link = completeLink(link, hostUrl, domain)
-                if isLink(link) and (not alreadyExist(link)):
-                     links.append(link)
-                    #  print link
+                newUrl = completeLink(newUrl, link.getUrl(), link.getDomain())
+                # 构造新的link
+                newLink = Link(newUrl, link.getDomain())
+                if isLink(newLink.getUrl()) and (not alreadyExist(newLink)):
+                     links.append(newLink)
             pointer = tailPos + 1
 
 def getScript():
