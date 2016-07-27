@@ -125,10 +125,8 @@ def getPage(urlList):
 def getScript():
     global payloads
     global countPage
-    '''
-    调试代码
-    countPage = 10
-    '''
+    # 调试代码
+    # countPage = 10
     for i in range(0, countPage - 1):
         fileName = 'temp/' + str(i + 1)
         inputFile = open(fileName, 'r')
@@ -142,11 +140,19 @@ def getScript():
             pos1 = source[head:].find('<script') + head
             pos2 = source[head:].find('</script>') + head
             if (pos1 >= head)and(pos2 >= head):
+                # flag = True
+                # payload = source[pos1:pos2 + 9]
+                # payload = payload.replace('\t','')
+                # payload = payload.replace('\n','')
+                # payload = payload.replace(' ','')
+                # payloads.append(payload)
+                # head = pos2 + 10
                 flag = True
-                payload = source[pos1:pos2 + 9]
-                payload = payload.replace('\t','')
-                payload = payload.replace('\n','')
-                payload = payload.replace(' ','')
+                tempString = source[pos1:pos2 + 9]
+                tempString = tempString.replace('\t','')
+                tempString = tempString.replace('\n','')
+                tempString = tempString.replace(' ','')
+                payload = Script(tempString)
                 payloads.append(payload)
                 head = pos2 + 10
         inputFile.close()
