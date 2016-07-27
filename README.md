@@ -21,9 +21,8 @@ To get a list of basic options and switches use:
 
     python anti-XSS.py -h
 
-To get a list of all options and switches use:
-
-    python anti-XSS.py -hh
+or:
+    python anti-XSS.py --help
 
 To get an overview of anti-XSS capabilities, list of supported features and description of all options and switches, along with examples, you are advised to consult the [user's manual](https://github.com/lewangbtcc/anti-XSS/wiki).
 
