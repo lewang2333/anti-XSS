@@ -1,8 +1,10 @@
+#coding:utf8
+
 from optparse import OptionParser
 
 def cmdLineParser():
     '''
-    cmdLineParser
+    控制台
     '''
     parser = OptionParser()
     parser.add_option('-v', '--version', dest='showVersion', action='store_true', help='Show program\'s version number and exit')
