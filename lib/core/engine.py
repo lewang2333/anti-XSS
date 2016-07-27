@@ -158,7 +158,6 @@ def xssScanner():
     global result
 
     for payload in payloads:
-        # case 0: safe; 1: notsafe;
         if (payload.find('cookie') > -1):
             payload.setDanger(True)
         result.append(payload)
