@@ -17,3 +17,5 @@ temp/
 # Report file
 result/
 
+# Payload file
+lib/payload/*.dic
