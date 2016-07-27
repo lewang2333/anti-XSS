@@ -1,26 +1,26 @@
 
 class Script(object):
-    
-    __payload = ''
+
+    __script = ''
     __fromDomain = ''
     __danger = False
 
-    def __init__(self, payload='', fromDomain='', danger=False):
-        self.__payload = payload
+    def __init__(self, script='', fromDomain='', danger=False):
+        self.__script = script
         self.__fromDomain = fromDomain
         self.__danger = danger
 
-    def setPayload(payload):
-        self.__payload = payload
+    def setScript(script):
+        self.__script = script
 
     def setFromDomain(fromDomain):
         self.__fromDomain = fromDomain
 
-    def setDanger(danger):
+    def setDanger(self, danger):
         self.__danger = danger
 
-    def getPayload(self):
-        return self.__payload
+    def getScript(self):
+        return self.__script
 
     def getFromDomain(self):
         return self.__fromDomain
@@ -29,4 +29,4 @@ class Script(object):
         return self.__danger
 
     def find(self, target):
-        return self.__payload.find(target)
+        return self.__script.find(target)

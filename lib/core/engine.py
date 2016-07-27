@@ -6,6 +6,7 @@ import urllib2
 from script import Script
 from lib.core.countpage import CountPage
 from lib.core.link import Link
+from lib.generator.report import gnrReport
 
 # 网页个数
 countPage = CountPage(0)
@@ -14,9 +15,9 @@ links = []
 # TODO: 把domain定义成全局变量
 domain = 'https://www.btcc.com'
 # 所有的js脚本
-payloads = []
+scripts = []
 # 所有的XSS威胁
-result = []
+xssScripts = []
 
 def createFile(countPage):
     fileName = 'temp/' + str(countPage)
@@ -136,15 +137,13 @@ def getPage(rootLink, depth):
             pointer = tailPos + 1
 
 def getScript():
-    global payloads
+    global scripts
     global countPage
     # 调试代码
-    countPage = 10
-    for i in range(0, countPage - 1):
-        fileName = 'temp/' + str(i + 1)
-        inputFile = open(fileName, 'r')
-        source = inputFile.read()
+    # countPage = 10
 
+    for link in links:
+        source = link.getPage()
         head = 0
         length = len(source)
         flag = True
@@ -158,35 +157,40 @@ def getScript():
                 tempString = tempString.replace('\t','')
                 tempString = tempString.replace('\n','')
                 tempString = tempString.replace(' ','')
-                payload = Script(tempString)
-                payloads.append(payload)
+                script = Script(tempString, link.getUrl())
+                scripts.append(script)
                 head = pos2 + 10
-        inputFile.close()
-    for payload in payloads:
-        print payload.getPayload()
+
+    # for script in scripts:
+    #     print script.getScript() + ' ' + script.getFromDomain()
 
 def xssScanner():
-    global payloads
-    global result
+    global scripts
+    global xssScripts
 
-    for payload in payloads:
-        if (payload.find('cookie') > -1):
-            payload.setDanger(True)
-            result.append(payload)
+    for script in scripts:
+        if (script.getScript().find('cookie') > -1):
+            script.setDanger(True)
+            xssScripts.append(scripts)
 
-    f2 = open('temp/result.md','w')
-    f2.write('# XSS Scan Result\n')
-    f2.write('## Found XSS Vulnerability\n```javascript\n')
-    for i in result:
-        f2.write(i.getPayload())
-    f2.write('```\n')
-    f2.close()
+    gnrReport(xssScripts)
 
+    # print len(links)
+    # for link in links:
+    #     print link.getUrl()
+
+
+    # print len(xssScripts)
+    # for script in scripts:
+    #     if script.getDanger():
+    #         print script.getScript() + ' ' + script.getFromDomain()
+    # # for xssScript in xssScripts:
+    # #     print xssScript.getScript() + ' ' + xssScript.getFromDomain()
 
 # 单元测试
-if __name__ == '__main__':
-    # if not os.path.exists('temp/'):
-    #     os.mkdir(r'temp/')
-    # getPage('https://www.btcc.com/news')
-    getScript()
-    xssScanner()
+# if __name__ == '__main__':
+#     # if not os.path.exists('temp/'):
+#     #     os.mkdir(r'temp/')
+#     # getPage('https://www.btcc.com/news')
+#     getScript()
+#     xssScanner()
