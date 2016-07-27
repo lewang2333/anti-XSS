@@ -86,7 +86,7 @@ def completeLink(link, hostUrl, domain):
 
 
 # 传入一个list文件，包含所有等根域名
-def getPage(rootLink):
+def getPage(rootLink, depth):
     global countPage
     # 如果没有temp目录就建立
     if not os.path.exists('temp/'):
@@ -96,7 +96,7 @@ def getPage(rootLink):
     # 先得到根域名的html文件
     for link in links:
         countPage.incNumber()
-        if countPage.getNumber() == 3:
+        if countPage.getNumber() == depth:
             return
         urlRequest = urllib2.Request(link.getUrl())
         urlResponse = urllib2.urlopen(urlRequest)
