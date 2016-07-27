@@ -13,7 +13,6 @@ from lib.generator.report import gnrReport
 countPage = CountPage(0)
 # 所有扫描到的链接
 links = []
-
 # 所有的js脚本
 scripts = []
 # 所有的XSS威胁
