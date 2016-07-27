@@ -2,6 +2,7 @@
 import os
 import urllib
 import urllib2
+from script import Script
 
 # 网页个数
 countPage = 0
@@ -126,7 +127,7 @@ def getScript():
     global payloads
     global countPage
     # 调试代码
-    # countPage = 10
+    countPage = 10
     for i in range(0, countPage - 1):
         fileName = 'temp/' + str(i + 1)
         inputFile = open(fileName, 'r')
@@ -156,8 +157,8 @@ def getScript():
                 payloads.append(payload)
                 head = pos2 + 10
         inputFile.close()
-    for j in payloads:
-        print j
+    for payload in payloads:
+        print payload.getPayload()
 
 def xssScanner():
     global payloads

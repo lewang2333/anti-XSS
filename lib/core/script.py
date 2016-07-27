@@ -26,3 +26,6 @@ class Script(object):
 
     def getDanger(self):
         return self.__danger
+
+    def find(self, target):
+        return self.__payload.find(target)
