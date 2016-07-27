@@ -4,16 +4,6 @@ class Script(object):
     __fromDomain = ''
     __danger = False
 
-    # def __init__(self):
-    #     pass
-    #
-    # def __init__(self, payload):
-    #     self.__payload = payload
-    #
-    # def __init__(self, payload, fromDomain):
-    #     self.__payload = payload
-    #     self.__fromDomain = fromDomain
-
     def __init__(self, payload='', fromDomain='', danger=False):
         self.__payload = payload
         self.__fromDomain = fromDomain
