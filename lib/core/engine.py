@@ -3,6 +3,7 @@ import os
 import urllib
 import urllib2
 
+from lib.generator.xsspayload import XssPayload
 from script import Script
 from lib.core.countpage import CountPage
 from lib.core.link import Link
@@ -12,8 +13,7 @@ from lib.generator.report import gnrReport
 countPage = CountPage(0)
 # 所有扫描到的链接
 links = []
-# TODO: 把domain定义成全局变量
-domain = 'https://www.btcc.com'
+
 # 所有的js脚本
 scripts = []
 # 所有的XSS威胁
@@ -27,8 +27,7 @@ def alreadyExist(link):
     for iLink in links:
         if link.getUrl() == iLink.getUrl():
             return True
-    # if link in links:
-    #     return True
+
     return False
 
 def getFatherUrl(url):
@@ -72,6 +71,8 @@ def getRoot(url):
 
 def completeLink(link, hostUrl, domain):
     completedLink = link
+    if completedLink == '':
+        return hostUrl
     if completedLink.find('[[site]]') != -1:
         completedLink = completedLink.replace('[[site]]',domain)
     elif (completedLink.find('http') == -1):
@@ -89,10 +90,7 @@ def completeLink(link, hostUrl, domain):
 # 传入一个list文件，包含所有等根域名
 def getPage(rootLink, depth):
     global countPage
-    # 如果没有temp目录就建立
-    if not os.path.exists('temp/'):
-        os.mkdir(r'temp/')
-    # 把根域名加进队列
+
     links.append(rootLink)
     # 先得到根域名的html文件
     for link in links:
@@ -129,6 +127,8 @@ def getPage(rootLink, depth):
                 # 格式化链接
                 newUrl = formalizeLink(newUrl)
                 # 链接补全
+                # print 'newUrl= ' + newUrl + str(len(newUrl))
+
                 newUrl = completeLink(newUrl, link.getUrl(), link.getDomain())
                 # 构造新的link
                 newLink = Link(newUrl, link.getDomain())
@@ -168,29 +168,12 @@ def xssScanner():
     global scripts
     global xssScripts
 
+    xssPayloads = XssPayload().getXssPayload()
     for script in scripts:
-        if (script.getScript().find('cookie') > -1):
-            script.setDanger(True)
-            xssScripts.append(scripts)
+        for xssPayload in xssPayloads:
+            if (script.getScript().find(xssPayload) > -1):
+                script.setDanger(True)
+                xssScripts.append(scripts)
+                break
 
     gnrReport(xssScripts)
-
-    # print len(links)
-    # for link in links:
-    #     print link.getUrl()
-
-
-    # print len(xssScripts)
-    # for script in scripts:
-    #     if script.getDanger():
-    #         print script.getScript() + ' ' + script.getFromDomain()
-    # # for xssScript in xssScripts:
-    # #     print xssScript.getScript() + ' ' + xssScript.getFromDomain()
-
-# 单元测试
-# if __name__ == '__main__':
-#     # if not os.path.exists('temp/'):
-#     #     os.mkdir(r'temp/')
-#     # getPage('https://www.btcc.com/news')
-#     getScript()
-#     xssScanner()

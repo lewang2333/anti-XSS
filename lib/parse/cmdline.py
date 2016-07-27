@@ -21,7 +21,7 @@ def cmdLineParser():
     (options, args) = parser.parse_args()
 
     if options.startUrl:
-        try:
+        # try:
             rootLink = Link(options.startUrl, options.startUrl)
             if options.depth:
                 getPage(rootLink, int(options.depth))
@@ -29,5 +29,5 @@ def cmdLineParser():
                 getPage(rootLink, 2)
             getScript()
             xssScanner()
-        except Exception as e:
-            print e
+        # except Exception as e:
+        #     print e
