@@ -83,28 +83,18 @@ def getPage(urlList):
     for hostUrl in links:
         countPage = countPage + 1
         # print 'This is the times: ' + str(countPage)
-        if countPage == 18:
+        if countPage == 10:
             # for i in links:
             #     print i
             return
-        HEADER = {
-            'Host': 'www.btcc.com',
-            'Cache-Control': 'max-age=0',
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-            'Accept-Encoding': 'gzip, deflate, sdch, br',
-            'Accept-Language': 'zh-CN,zh;q=0.8,en;q=0.6',
-        }
         urlRequest = urllib2.Request(hostUrl)
         urlResponse = urllib2.urlopen(urlRequest)
         htmlSource = urlResponse.read()
         # 把html源码写入文件中
-        '''
         fileName = createFile(countPage)
         outputFile = open(fileName, 'w')
         outputFile.write(htmlSource)
         outputFile.close()
-        '''
         # 写入完成
 
         # 获取page中的链接
