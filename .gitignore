@@ -7,4 +7,8 @@ temp/
 *.sp
 
 # Binary file
-.pyc
+*.pyc
+
+# Bash file
+*.sh
+
