@@ -7,6 +7,7 @@ from script import Script
 from lib.core.link import Link
 from lib.core.countpage import CountPage
 from lib.generator.report import gnrReport
+from lib.generator.scripttag import ScriptTag
 from lib.generator.linkfilter import LinkFilter
 from lib.generator.xsspayload import XssPayload
 
@@ -80,7 +81,6 @@ def completeLink(link, hostUrl, domain):
     return completedLink
 
 
-# 传入一个list文件，包含所有等根域名
 def getPage(rootLink, depth):
     global countPage
 
@@ -135,24 +135,29 @@ def getScript():
     # 调试代码
     # countPage = 10
 
+    scriptTags = ScriptTag().getScriptTag()
+
     for link in links:
-        source = link.getPage()
-        head = 0
-        length = len(source)
-        flag = True
-        while ((flag) and (head < length)):
-            flag = False
-            pos1 = source[head:].find('<script') + head
-            pos2 = source[head:].find('</script>') + head
-            if (pos1 >= head)and(pos2 >= head):
-                flag = True
-                tempString = source[pos1:pos2 + 9]
-                tempString = tempString.replace('\t','')
-                tempString = tempString.replace('\n','')
-                tempString = tempString.replace(' ','')
-                script = Script(tempString, link.getUrl())
-                scripts.append(script)
-                head = pos2 + 10
+        for scriptTag in scriptTags:
+            headTag = scriptTag.replace('\n','').split('|')[0]
+            tailTag = scriptTag.replace('\n','').split('|')[1]
+            source = link.getPage()
+            head = 0
+            length = len(source)
+            flag = True
+            while ((flag) and (head < length)):
+                flag = False
+                pos1 = source[head:].find(headTag) + head
+                pos2 = source[head:].find(tailTag) + head
+                if (pos1 >= head)and(pos2 >= head):
+                    flag = True
+                    tempString = source[pos1:pos2 + 9]
+                    tempString = tempString.replace('\t','')
+                    tempString = tempString.replace('\n','')
+                    tempString = tempString.replace(' ','')
+                    script = Script(tempString, link.getUrl())
+                    scripts.append(script)
+                    head = pos2 + 10
 
     # for script in scripts:
     #     print script.getScript() + ' ' + script.getFromDomain()
