@@ -13,3 +13,7 @@ temp/
 
 # Bash file
 *.sh
+
+# Report file
+result/
+

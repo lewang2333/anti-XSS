@@ -8,10 +8,10 @@ def gnrReport(xssScripts):
     明天要把xssScripts写成一个类！
     '''
 
-    fileName = 'temp/report.md'
+    fileName = 'result/report.md'
 
-    if not os.path.exists('temp/'):
-        os.mkdir(r'temp/')
+    if not os.path.exists('result/'):
+        os.mkdir(r'result/')
 
     f = open(fileName, 'w')
 
