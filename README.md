@@ -22,6 +22,7 @@ To get a list of basic options and switches use:
     python anti-XSS.py -h
 
 or:
+
     python anti-XSS.py --help
 
 To get an overview of anti-XSS capabilities, list of supported features and description of all options and switches, along with examples, you are advised to consult the [user's manual](https://github.com/lewangbtcc/anti-XSS/wiki).
@@ -30,10 +31,7 @@ To get an overview of anti-XSS capabilities, list of supported features and desc
 
 * Author's homepage: http://laiw3n.com
 * Download: [.tar.gz](https://github.com/lewangbtcc/anti-XSS/tarball/master) or [.zip](https://github.com/lewangbtcc/anti-XSS/zipball/master)
-* Commits RSS feed: https://github.com/lewangbtcc/anti-XSS/commits/master.atom
-* Issue tracker: https://github.com/lewangbtcc/anti-XSS/issues
-* User's manual: https://github.com/lewangbtcc/anti-XSS/wiki
-* Frequently Asked Questions (FAQ): https://github.com/lewangbtcc/anti-XSS/wiki/FAQ
+
 
 # Acknowledgement
 
