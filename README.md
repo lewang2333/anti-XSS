@@ -3,7 +3,7 @@
 [![Python 2.6|2.7](https://img.shields.io/badge/python-2.6|2.7-yellow.svg)](https://www.python.org/)
 [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://raw.githubusercontent.com/jmoiron/jigo/master/LICENSE)
 
-anti-XSS is an open source XSS scanning tool that automates the process of detecting as well as mining XSS scripts and generate the scanning report automatically which comes with a powerful detection engine.
+anti-XSS is an open source XSS scanning tool which comes with a powerful detection engine. It automates the process of detecting as well as mining XSS scripts and generate the scanning report automatically.
 
 # Installation
 
