@@ -1,22 +1,28 @@
 # anti-XSS
 
 [![Build Status](https://travis-ci.org/lewangbtcc/anti-XSS.svg?branch=master)](https://travis-ci.org/lewangbtcc/anti-XSS)
-[![Python 2.6|2.7](https://img.shields.io/badge/python-2.7-yellow.svg)](https://www.python.org/)
+[![Python 2.7](https://img.shields.io/badge/python-2.7-yellow.svg)](https://www.python.org/)
 [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://raw.githubusercontent.com/lewangbtcc/anti-XSS/master/LICENSE)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Le%20Wang-blue.svg)](http://www.linkedin.com/in/le-wang-5870bb114)
-[![Page](https://img.shields.io/badge/Page-Armoury%20LaiW3n-ff69b4.svg)](http://laiw3n.com)
 
 anti-XSS is an open source XSS scanning tool which comes with a powerful detection engine. It automates the process of detecting as well as mining XSS scripts and generate the scanning report automatically.
+
+# Requirements
+
+* [Python 2.7.x](http://www.python.org/download/)
+* [Reportlab](https://pypi.python.org/pypi/reportlab/)
 
 # Installation
 
 You can download the latest zipball by clicking [here](https://github.com/lewangbtcc/anti-XSS/archive/master.zip).
 
-Preferably, you can download anti-XSS by cloning the [Git](https://github.com/lewangbtcc/anti-XSS) repository:
+Preferably, you can download anti-XSS by cloning the [Git](https://github.com/lewangbtcc/anti-XSS) repository and then install requirements.
 
-    git clone https://git@github.com:lewangbtcc/anti-XSS.git anti-XSS
+    $ git clone https://git@github.com:lewangbtcc/anti-XSS.git anti-XSS
+    $ cd anti-XSS
+    $ pip install -r requirements.txt
 
-anti-XSS works out of the box with [Python](http://www.python.org/download/) version **2.6.x** and **2.7.x** on any platform.
+anti-XSS works out of the box with [Python](http://www.python.org/download/) version **2.7.x** on any platform.
 
 # Usage
 
