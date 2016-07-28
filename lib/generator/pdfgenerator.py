@@ -9,7 +9,7 @@ import subprocess
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 
-class PdfReport(object):
+class PdfGnerator(object):
     """docstring for """
     __target = ''
     __text = []
