@@ -1,7 +1,10 @@
 # anti-XSS
 
-[![Python 2.6|2.7](https://img.shields.io/badge/python-2.6|2.7-yellow.svg)](https://www.python.org/)
+[![Build Status](https://travis-ci.org/lewangbtcc/anti-XSS.svg?branch=master)](https://travis-ci.org/lewangbtcc/anti-XSS)
+[![Python 2.6|2.7](https://img.shields.io/badge/python-2.7-yellow.svg)](https://www.python.org/)
 [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://raw.githubusercontent.com/lewangbtcc/anti-XSS/master/LICENSE)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Le%20Wang-blue.svg)](http://www.linkedin.com/in/le-wang-5870bb114)
+[![Page](https://img.shields.io/badge/Page-Armoury%20LaiW3n-ff69b4.svg)](http://laiw3n.com)
 
 anti-XSS is an open source XSS scanning tool which comes with a powerful detection engine. It automates the process of detecting as well as mining XSS scripts and generate the scanning report automatically.
 
