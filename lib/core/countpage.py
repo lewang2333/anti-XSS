@@ -1,9 +1,11 @@
-#coding: utf8
+#!/usr/bin/env python
+
+"""
+Copyright (c) 2016 anti-XSS developers (http://laiw3n.com/)
+"""
 
 class CountPage(object):
-    """
-    网页计数器
-    """
+
     __number = 0
 
     def __init__(self, number=0):

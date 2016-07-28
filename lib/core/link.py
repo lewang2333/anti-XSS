@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+
+"""
+Copyright (c) 2016 anti-XSS developers (http://laiw3n.com/)
+"""
 
 class Link(object):
 
@@ -29,4 +34,4 @@ class Link(object):
         self.__page = page
 
     def toString(self):
-        return 'url= ' + self.__url + '\ndomain= ' + self.__domain + '\npage= ' + self.__page 
+        return 'url= ' + self.__url + '\ndomain= ' + self.__domain + '\npage= ' + self.__page

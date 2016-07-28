@@ -1,4 +1,9 @@
-#coding: utf8
+#!/usr/bin/env python
+
+"""
+Copyright (c) 2016 anti-XSS developers (http://laiw3n.com/)
+"""
+
 import os
 import urllib
 import urllib2
@@ -11,13 +16,14 @@ from lib.generator.scripttag import ScriptTag
 from lib.generator.linkfilter import LinkFilter
 from lib.generator.xsspayload import XssPayload
 
-# 网页个数
+# TODO: Remove these vars or change it to class
+# Total number of pages
 countPage = CountPage(0)
-# 所有扫描到的链接
+# All links
 links = []
-# 所有的js脚本
+# All JavaScript
 scripts = []
-# 所有的XSS威胁
+# All XSS vulnerability payloads
 xssScripts = []
 
 def createFile(countPage):
@@ -76,8 +82,7 @@ def completeLink(link, hostUrl, domain):
             completedLink = hostUrl + '/' + completedLink
         else:
             completedLink = getRoot(hostUrl) + completedLink
-            # print completedLink
-            # print hostUrl
+
     return completedLink
 
 
@@ -85,27 +90,17 @@ def getPage(rootLink, depth):
     global countPage
 
     links.append(rootLink)
-    # 先得到根域名的html文件
+    # Download the source file of root link and set it as the root in BFS queue
     for link in links:
         countPage.incNumber()
         if countPage.getNumber() == depth:
             return
         urlRequest = urllib2.Request(link.getUrl())
         urlResponse = urllib2.urlopen(urlRequest)
-
-        # 把html源码写入文件中
-        # fileName = createFile(countPage.getNumber())
-        # outputFile = open(fileName, 'w')
-        # outputFile.write(htmlSource)
-        # outputFile.close()
-        # 写入完成
-
-        # 把html源码写进Link类的__page中
         link.setPage(urlResponse.read())
-        # 写入完成
 
-
-        # 获取page中的链接
+        # A humble way to insert links into queue
+        # TODO: Threads mode
         htmlSource = link.getPage().lower()
         pointer = 0
         pageLength = len(htmlSource)
@@ -117,13 +112,11 @@ def getPage(rootLink, depth):
             if (headPos >= pointer) and (tailPos >= pointer):
                 isAnyScript = True
                 newUrl = htmlSource[headPos + 6:tailPos]
-                # 格式化链接
+                # Formalize the origin link
                 newUrl = formalizeLink(newUrl)
-                # 链接补全
-                # print 'newUrl= ' + newUrl + str(len(newUrl))
-
+                # Complete it with domain
                 newUrl = completeLink(newUrl, link.getUrl(), link.getDomain())
-                # 构造新的link
+                # Reconstruct link
                 newLink = Link(newUrl, link.getDomain())
                 if isLink(newLink.getUrl()) and (not alreadyExist(newLink)):
                      links.append(newLink)
@@ -132,8 +125,6 @@ def getPage(rootLink, depth):
 def getScript():
     global scripts
     global countPage
-    # 调试代码
-    # countPage = 10
 
     scriptTags = ScriptTag().getScriptTag()
 
@@ -159,8 +150,6 @@ def getScript():
                     scripts.append(script)
                     head = pos2 + 10
 
-    # for script in scripts:
-    #     print script.getScript() + ' ' + script.getFromDomain()
 
 def xssScanner():
     global scripts
