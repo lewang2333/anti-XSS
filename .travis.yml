@@ -5,10 +5,6 @@ python:
 install: "pip install -r requirements.txt"
 # command to run tests
 script:
-  - python -c "from lib.core.link import Link"
-  - python -c "from optparse import OptionParser"
-  - python -c "from lib.core.engine import links"
-  - python -c "from lib.core.engine import getPage"
-  - python -c "from lib.core.engine import getScript"
-  - python -c "from lib.core.engine import xssScanner"
-  - python -c "from lib.generator.report import gnrReport"
+  - python anti-XSS.py -h
+  - python anti-XSS.py --help
+  - python anti-XSS.py -u http://www.google.com
