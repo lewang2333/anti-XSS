@@ -1,6 +1,5 @@
 # Temporary file
 temp/
-*.txt
 *.ax
 *.lk
 *.pg
