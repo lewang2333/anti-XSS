@@ -4,9 +4,6 @@ import os
 
 
 def gnrReport(xssScripts):
-    '''
-    明天要把xssScripts写成一个类！
-    '''
 
     fileName = 'result/report.md'
 
