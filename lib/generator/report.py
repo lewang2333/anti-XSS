@@ -17,16 +17,16 @@ def gnrReport(xssScripts):
 
     f = open(fileName, 'w')
 
-    f.write('# anti-XSS Cross Site Script Scanning Report\n')
-    f.write('## Summary\n')
-    f.write('There are ' + str(len(xssScripts)) + ' XSS vulnerabilities found.\n' )
+    f.write('# anti-XSS Cross Site Script Scanning Report\n\n')
+    f.write('## Summary\n\n')
+    f.write('There are ' + str(len(xssScripts)) + ' XSS vulnerabilities found.\n\n' )
 
     if len(xssScripts) < 1:
         return None
 
-    f.write('## Found vulnerabilities \n')
+    f.write('## Found vulnerabilities \n\n')
 
     for xssScript in xssScripts:
-        f.write('Payload: ' + xssScript.getScript() + '\t From: ' + xssScript.getFromDomain() + '\n')
+        f.write('Payload: ' + xssScript.getScript() + '\t From: ' + xssScript.getFromDomain() + '\n\n')
 
     f.close()
