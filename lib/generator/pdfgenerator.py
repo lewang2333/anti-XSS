@@ -4,8 +4,10 @@
 Copyright (c) 2016 anti-XSS developers (http://laiw3n.com/)
 """
 
+import os
 import datetime
 import subprocess
+
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 
@@ -14,12 +16,14 @@ class PdfGnerator(object):
     __target = ''
     __text = []
     __pdfName = ''
-    __path = '../../result/'
+    __path = 'result/'
 
-    def __init__(self, target='your website', pdfName='Report.pdf', text=[]):
+    def __init__(self, text=[], target='your website', pdfName='Report.pdf'):
         self.__target = target
         self.__pdfName = self.__path + pdfName
         self.__text = text
+        if not os.path.exists('result/'):
+            os.mkdir(r'result/')
         time = datetime.datetime.today()
         date = time.strftime("%h-%d-%Y %H:%M:%S")
         c = canvas.Canvas(self.__pdfName)

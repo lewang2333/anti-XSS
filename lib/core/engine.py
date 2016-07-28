@@ -15,6 +15,11 @@ from lib.generator.report import gnrReport
 from lib.generator.scripttag import ScriptTag
 from lib.generator.linkfilter import LinkFilter
 from lib.generator.xsspayload import XssPayload
+from lib.generator.pdfgenerator import PdfGnerator
+
+# import pdfgnerator as PdfGnerator
+from lib.structure.reporttext import ReportText
+
 
 # TODO: Remove these vars or change it to class
 # Total number of pages
@@ -161,6 +166,7 @@ def xssScanner():
             if (script.getScript().find(xssPayload) > -1):
                 script.setDanger(True)
                 xssScripts.append(scripts)
-                break
 
+                break
     gnrReport(xssScripts)
+    PdfGnerator(ReportText().getText())

@@ -8,14 +8,11 @@ class ReportText(object):
     """docstring for """
     text = []
 
-    def __init__(self, text=[]):
-        pass
-
     def addText(self, text):
-        self.text.append(text)
+        ReportText.text.append(text)
 
     def setText(self, text):
-        self.text = text
+        ReportText.text = text
 
     def getText(self):
-        return self.text
+        return ReportText.text
