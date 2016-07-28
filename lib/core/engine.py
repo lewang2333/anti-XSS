@@ -156,17 +156,20 @@ def getScript():
                     head = pos2 + 10
 
 
+
 def xssScanner():
     global scripts
     global xssScripts
 
     xssPayloads = XssPayload().getXssPayload()
+
     for script in scripts:
         for xssPayload in xssPayloads:
-            if (script.getScript().find(xssPayload) > -1):
+            if (script.getScript().find(xssPayload.replace('\n','')) > -1):
                 script.setDanger(True)
-                xssScripts.append(scripts)
+                xssScripts.append(script.getScript() + '\t' + script.getFromDomain())
 
                 break
+
     gnrReport(xssScripts)
     PdfGnerator(ReportText().getText())

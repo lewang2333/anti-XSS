@@ -27,8 +27,9 @@ class PdfGnerator(object):
         time = datetime.datetime.today()
         date = time.strftime("%h-%d-%Y %H:%M:%S")
         c = canvas.Canvas(self.__pdfName)
+        c.setPageSize((16 * inch,22 * inch))
         textobj = c.beginText()
-        textobj.setTextOrigin(inch, 11 * inch)
+        textobj.setTextOrigin(inch, 20 * inch)
         textobj.textLines('''
             This is the scanning report of %s.
             ''' %self.__target)

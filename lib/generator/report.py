@@ -19,4 +19,8 @@ def gnrReport(xssScripts):
     ReportText().addText('')
     ReportText().addText('Found vulnerabilities')
     for xssScript in xssScripts:
-        ReportText().addText('Payload: ' + xssScript.getScript() + '\t From: ' + xssScript.getFromDomain() + '\n\n')
+        head = xssScript.split('\t')[0]
+        tail = xssScript.split('\t')[1]
+        ReportText().addText('Payload: ' + head)
+        ReportText().addText('From: ' + tail)
+        ReportText().addText('')
