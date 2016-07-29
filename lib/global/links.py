@@ -4,9 +4,9 @@
 Copyright (c) 2016 anti-XSS developers
 '''
 
-class ReportText(object):
+class Links(object):
     '''
-    ReportText class used as a global var.
+    Links class useed as a global var.
     '''
 
     text = []
