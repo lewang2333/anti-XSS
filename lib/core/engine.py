@@ -22,18 +22,13 @@ from lib.structure.reporttext import ReportText
 
 
 # TODO: Remove these vars or change it to class
-# Total number of pages
-countPage = CountPage(0)
+# Total number of pages : CountPage class
 # All links
 links = []
 # All JavaScript
 scripts = []
 # All XSS vulnerability payloads
 xssScripts = []
-
-def createFile(countPage):
-    fileName = 'temp/' + str(countPage)
-    return fileName
 
 def alreadyExist(link):
     for iLink in links:
@@ -92,13 +87,14 @@ def completeLink(link, hostUrl, domain):
 
 
 def getPage(rootLink, depth):
-    global countPage
+    # Init the glbal var CountPage().number as 0
+    CountPage(0)
 
     links.append(rootLink)
     # Download the source file of root link and set it as the root in BFS queue
     for link in links:
-        countPage.incNumber()
-        if countPage.getNumber() == depth:
+        CountPage().incNumber()
+        if CountPage().getNumber() == depth:
             return
         urlRequest = urllib2.Request(link.getUrl())
         urlResponse = urllib2.urlopen(urlRequest)
@@ -129,7 +125,6 @@ def getPage(rootLink, depth):
 
 def getScript():
     global scripts
-    global countPage
 
     scriptTags = ScriptTag().getScriptTag()
 
