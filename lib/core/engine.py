@@ -16,13 +16,10 @@ from lib.generator.scripttag import ScriptTag
 from lib.generator.linkfilter import LinkFilter
 from lib.generator.xsspayload import XssPayload
 from lib.generator.pdfgenerator import PdfGnerator
-
-# import pdfgnerator as PdfGnerator
 from lib.structure.reporttext import ReportText
 
 
-# TODO: Remove these vars or change it to class
-# Total number of pages : CountPage class
+# TODO: Remove these vars or change it to class LE.WANG
 # All links
 links = []
 # All JavaScript
@@ -31,6 +28,9 @@ scripts = []
 xssScripts = []
 
 def alreadyExist(link):
+    '''
+    Judge if the link is already exist in links[]
+    '''
     for iLink in links:
         if link.getUrl() == iLink.getUrl():
             return True
@@ -38,14 +38,21 @@ def alreadyExist(link):
     return False
 
 def getFatherUrl(url):
+    # TODO: change this silly name of this function LE.WANG
+    '''
+    Return the upper link of url
+    '''
     fatherUrl = url[::-1]
     pos = len(fatherUrl) - fatherUrl.find('/') + -1
     fatherUrl = fatherUrl[::-1][:pos]
+
     return fatherUrl
 
 def isLink(link):
     # TODO: There may meet a problem when there is a couple of same keywords in the url;
-
+    '''
+    Judge if this link is a 'legel' link in scanner
+    '''
     filterList = LinkFilter().getLinkFilter()
     for filterString in filterList:
         if link.find(filterString) != -1:
@@ -54,6 +61,9 @@ def isLink(link):
     return True
 
 def formalizeLink(link):
+    '''
+    Formalize the link (url)
+    '''
     formalizedLink = link
     formalizedLink = formalizedLink.replace('\t','')
     formalizedLink = formalizedLink.replace('\n','')
@@ -63,6 +73,9 @@ def formalizeLink(link):
     return formalizedLink
 
 def getRoot(url):
+    '''
+    Return the domain
+    '''
     pos = url[8:].find('/')
     if pos == -1:
         return url
