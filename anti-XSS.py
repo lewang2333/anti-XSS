@@ -8,7 +8,6 @@ import sys
 
 from lib.core.link import Link
 from optparse import OptionParser
-from lib.core.engine import links
 from lib.core.engine import getPage
 from lib.core.engine import getScript
 from lib.core.engine import xssScanner
