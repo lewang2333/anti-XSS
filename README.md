@@ -7,6 +7,8 @@
 
 anti-XSS is an open source XSS scanning tool which comes with a powerful detection engine. It automates the process of detecting as well as mining XSS scripts and generate the scanning report automatically.
 
+**N.B: The project is under development and prone to bugs**
+
 # Requirements
 
 * [Python 2.7.x](http://www.python.org/download/)
