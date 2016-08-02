@@ -10,6 +10,7 @@ import urllib2
 
 from script import Script
 from lib.core.link import Link
+from lib.var.links import Links
 from lib.core.countpage import CountPage
 from lib.generator.report import gnrReport
 from lib.generator.scripttag import ScriptTag
@@ -18,10 +19,9 @@ from lib.generator.xsspayload import XssPayload
 from lib.generator.pdfgenerator import PdfGnerator
 from lib.structure.reporttext import ReportText
 
+# print LinkFilter().getLinkFilter()
 
 # TODO: Remove these vars or change it to class LE.WANG
-# All links
-links = []
 # All JavaScript
 scripts = []
 # All XSS vulnerability payloads
@@ -31,7 +31,7 @@ def alreadyExist(link):
     '''
     Judge if the link is already exist in links[]
     '''
-    for iLink in links:
+    for iLink in Links().getContent():
         if link.getUrl() == iLink.getUrl():
             return True
 
@@ -70,6 +70,7 @@ def formalizeLink(link):
     formalizedLink = formalizedLink.replace(' ','')
     if formalizedLink[len(formalizedLink) - 1] == '/':
         formalizedLink = formalizedLink[:len(formalizedLink) - 1]
+        # print formalizedLink
     return formalizedLink
 
 def getRoot(url):
@@ -95,7 +96,7 @@ def completeLink(link, hostUrl, domain):
             completedLink = hostUrl + '/' + completedLink
         else:
             completedLink = getRoot(hostUrl) + completedLink
-
+            # print completedLink
     return completedLink
 
 
@@ -103,9 +104,9 @@ def getPage(rootLink, depth):
     # Init the glbal var CountPage().number as 0
     CountPage(0)
 
-    links.append(rootLink)
+    Links().addText(rootLink)
     # Download the source file of root link and set it as the root in BFS queue
-    for link in links:
+    for link in Links().getContent():
         CountPage().incNumber()
         if CountPage().getNumber() == depth:
             return
@@ -126,6 +127,7 @@ def getPage(rootLink, depth):
             if (headPos >= pointer) and (tailPos >= pointer):
                 isAnyScript = True
                 newUrl = htmlSource[headPos + 6:tailPos]
+                # print newUrl
                 # Formalize the origin link
                 newUrl = formalizeLink(newUrl)
                 # Complete it with domain
@@ -133,7 +135,8 @@ def getPage(rootLink, depth):
                 # Reconstruct link
                 newLink = Link(newUrl, link.getDomain())
                 if isLink(newLink.getUrl()) and (not alreadyExist(newLink)):
-                     links.append(newLink)
+                     Links().addText(newLink)
+                    #  print newLink.getUrl()
             pointer = tailPos + 1
 
 def getScript():
@@ -141,7 +144,7 @@ def getScript():
 
     scriptTags = ScriptTag().getScriptTag()
 
-    for link in links:
+    for link in Links().getContent():
         for scriptTag in scriptTags:
             headTag = scriptTag.replace('\n','').split('|')[0]
             tailTag = scriptTag.replace('\n','').split('|')[1]

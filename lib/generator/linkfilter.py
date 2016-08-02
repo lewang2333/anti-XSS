@@ -13,7 +13,7 @@ class LinkFilter(object):
             f = open('lib/payload/linkfilter.dic', 'r')
             payload = f.readline()
             while payload != '':
-                self.__list.append(payload)
+                self.__list.append(payload.replace('\n',''))
                 payload = f.readline()
 
             f.close()
