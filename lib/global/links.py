@@ -17,8 +17,8 @@ class Links(object):
     def addText(self, text):
         self.content.append(text)
 
-    def setText(self, content):
+    def setContent(self, content):
         self.content = content
 
-    def getText(self):
+    def getContent(self):
         return self.content
