@@ -6,19 +6,19 @@ Copyright (c) 2016 anti-XSS developers
 
 class Links(object):
     '''
-    Links class useed as a global var.
+    Links class used as a global var.
     '''
 
-    text = []
+    content = []
 
     def __init__(self):
         pass
 
     def addText(self, text):
-        self.text.append(text)
+        self.content.append(text)
 
-    def setText(self, text):
-        self.text = text
+    def setText(self, content):
+        self.content = content
 
     def getText(self):
-        return self.text
+        return self.content
