@@ -15,9 +15,9 @@ class Scripts(object):
         pass
 
     def addText(self, text):
-        self.text.append(text)
+        self.content.append(text)
 
-    def setContent(self, text):
+    def setContent(self, content):
         self.content = content
 
     def getContent(self):
