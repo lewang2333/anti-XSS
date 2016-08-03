@@ -9,7 +9,7 @@ class Scripts(object):
     Scripts class useed as a global var.
     '''
 
-    text = []
+    content = []
 
     def __init__(self):
         pass
@@ -17,8 +17,8 @@ class Scripts(object):
     def addText(self, text):
         self.text.append(text)
 
-    def setText(self, text):
-        self.text = text
+    def setContent(self, text):
+        self.content = content
 
-    def getText(self):
-        return self.text
+    def getContent(self):
+        return self.content
