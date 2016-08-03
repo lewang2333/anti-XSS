@@ -20,8 +20,6 @@ from lib.generator.xsspayload import XssPayload
 from lib.generator.pdfgenerator import PdfGnerator
 from lib.structure.reporttext import ReportText
 
-# print LinkFilter().getLinkFilter()
-
 # TODO: Remove these vars or change it to class LE.WANG
 # All XSS vulnerability payloads
 xssScripts = []
@@ -30,6 +28,7 @@ def alreadyExist(link):
     '''
     Judge if the link is already exist in links[]
     '''
+
     for iLink in Links().getContent():
         if link.getUrl() == iLink.getUrl():
             return True
@@ -41,6 +40,7 @@ def getFatherUrl(url):
     '''
     Return the upper link of url
     '''
+
     fatherUrl = url[::-1]
     pos = len(fatherUrl) - fatherUrl.find('/') + -1
     fatherUrl = fatherUrl[::-1][:pos]
@@ -52,6 +52,7 @@ def isLink(link):
     '''
     Judge if this link is a 'legel' link in scanner
     '''
+
     filterList = LinkFilter().getLinkFilter()
     for filterString in filterList:
         if link.find(filterString) != -1:
@@ -63,6 +64,7 @@ def formalizeLink(link):
     '''
     Formalize the link (url)
     '''
+
     formalizedLink = link
     formalizedLink = formalizedLink.replace('\t','')
     formalizedLink = formalizedLink.replace('\n','')
@@ -76,6 +78,7 @@ def getRoot(url):
     '''
     Return the domain
     '''
+
     pos = url[8:].find('/')
     if pos == -1:
         return url
@@ -84,6 +87,10 @@ def getRoot(url):
     return rootUrl
 
 def completeLink(link, hostUrl, domain):
+    '''
+    Complete the link url
+    '''
+
     completedLink = link
     if completedLink == '':
         return hostUrl
@@ -101,6 +108,10 @@ def completeLink(link, hostUrl, domain):
 
 
 def getPage(rootLink, depth):
+    '''
+    Get the source code of pages and get the links on them
+    '''
+
     # Init the glbal var CountPage().number as 0
     CountPage(0)
 
@@ -139,6 +150,9 @@ def getPage(rootLink, depth):
             pointer = tailPos + 1
 
 def getScript():
+    '''
+    Store the JavaScript
+    '''
 
     scriptTags = ScriptTag().getScriptTag()
 
@@ -167,6 +181,10 @@ def getScript():
 
 
 def xssScanner():
+    '''
+    Store the XSS Script
+    '''
+
     global xssScripts
 
     xssPayloads = XssPayload().getXssPayload()
