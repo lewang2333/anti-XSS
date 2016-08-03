@@ -138,7 +138,6 @@ def getPage(rootLink, depth):
             if (headPos >= pointer) and (tailPos >= pointer):
                 isAnyScript = True
                 newUrl = htmlSource[headPos + 6:tailPos]
-                # print newUrl
                 # Formalize the origin link
                 newUrl = formalizeLink(newUrl)
                 # Complete it with domain
