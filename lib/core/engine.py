@@ -23,8 +23,6 @@ from lib.structure.reporttext import ReportText
 # print LinkFilter().getLinkFilter()
 
 # TODO: Remove these vars or change it to class LE.WANG
-# All JavaScript
-scripts = []
 # All XSS vulnerability payloads
 xssScripts = []
 
@@ -71,7 +69,7 @@ def formalizeLink(link):
     formalizedLink = formalizedLink.replace(' ','')
     if formalizedLink[len(formalizedLink) - 1] == '/':
         formalizedLink = formalizedLink[:len(formalizedLink) - 1]
-        # print formalizedLink
+
     return formalizedLink
 
 def getRoot(url):
@@ -82,6 +80,7 @@ def getRoot(url):
     if pos == -1:
         return url
     rootUrl = url[:pos + 8]
+
     return rootUrl
 
 def completeLink(link, hostUrl, domain):
@@ -97,7 +96,7 @@ def completeLink(link, hostUrl, domain):
             completedLink = hostUrl + '/' + completedLink
         else:
             completedLink = getRoot(hostUrl) + completedLink
-            # print completedLink
+
     return completedLink
 
 
@@ -137,11 +136,9 @@ def getPage(rootLink, depth):
                 newLink = Link(newUrl, link.getDomain())
                 if isLink(newLink.getUrl()) and (not alreadyExist(newLink)):
                      Links().addText(newLink)
-                    #  print newLink.getUrl()
             pointer = tailPos + 1
 
 def getScript():
-    # global scripts
 
     scriptTags = ScriptTag().getScriptTag()
 
@@ -165,18 +162,15 @@ def getScript():
                     tempString = tempString.replace(' ','')
                     script = Script(tempString, link.getUrl())
                     Scripts().addText(script)
-                    # scripts.append(script)
                     head = pos2 + 10
 
 
 
 def xssScanner():
-    # global scripts
     global xssScripts
 
     xssPayloads = XssPayload().getXssPayload()
 
-    # for script in scripts:
     for script in Scripts().getContent():
         for xssPayload in xssPayloads:
             if (script.getScript().find(xssPayload.replace('\n','')) > -1):
