@@ -23,17 +23,6 @@ from lib.generator.xsspayload import XssPayload
 from lib.generator.pdfgenerator import PdfGnerator
 from lib.structure.reporttext import ReportText
 
-def alreadyExist(link):
-    '''
-    Judge if the link is already exist in links[]
-    '''
-
-    for iLink in Links().getContent():
-        if link.getUrl() == iLink.getUrl():
-            return True
-
-    return False
-
 def getFatherUrl(url):
     # TODO: change this silly name of this function LE.WANG
     '''
@@ -129,7 +118,7 @@ def getPage(rootLink, depth):
                 newUrl = completeLink(newUrl, link.getUrl(), link.getDomain())
                 # Reconstruct link
                 newLink = Link(newUrl, link.getDomain())
-                if isLink(newLink.getUrl()) and (not alreadyExist(newLink)):
+                if isLink(newLink.getUrl()) and (not isExist(newLink)):
                      Links().addText(newLink)
             pointer = tailPos + 1
 
