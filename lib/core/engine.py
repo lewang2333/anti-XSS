@@ -13,7 +13,7 @@ from lib.core.link import Link
 from lib.var.links import Links
 from lib.var.scripts import Scripts
 from lib.var.xssscripts import XssScripts
-from lib.core.countpage import CountPage
+from lib.var.countpage import CountPage
 from lib.generator.report import gnrReport
 from lib.generator.scripttag import ScriptTag
 from lib.generator.linkfilter import LinkFilter
