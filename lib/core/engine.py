@@ -99,7 +99,6 @@ def getPage(rootLink, depth):
         link.setPage(urlResponse.read())
 
         # A humble way to insert links into queue
-        # TODO: Threads mode
         htmlSource = link.getPage().lower()
         pointer = 0
         pageLength = len(htmlSource)
@@ -121,6 +120,9 @@ def getPage(rootLink, depth):
                      Links().addText(newLink)
             pointer = tailPos + 1
 
+    # Debug
+    # for link in Links().getContent():
+    #     print link.getUrl()
     pass
 
 def getScript():
