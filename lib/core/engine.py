@@ -48,7 +48,6 @@ def isLink(link):
 
     return True
 
-
 def getRoot(url):
     '''
     Return the domain
@@ -122,6 +121,8 @@ def getPage(rootLink, depth):
                      Links().addText(newLink)
             pointer = tailPos + 1
 
+    pass
+
 def getScript():
     '''
     Store the JavaScript
@@ -151,6 +152,8 @@ def getScript():
                     Scripts().addText(script)
                     head = pos2 + 10
 
+    pass
+
 
 
 def xssScanner():
@@ -170,3 +173,5 @@ def xssScanner():
 
     gnrReport(XssScripts().getContent())
     PdfGnerator(ReportText().getText())
+
+    pass
