@@ -8,23 +8,20 @@ import os
 import urllib
 import urllib2
 
-from lib.core.strfun import *
+from lib.core.urlfun import *
 
 from script import Script
 from lib.core.link import Link
 from lib.var.links import Links
 from lib.var.scripts import Scripts
-from lib.var.xssscripts import XssScripts
 from lib.var.countpage import CountPage
+from lib.var.xssscripts import XssScripts
 from lib.generator.report import gnrReport
 from lib.generator.scripttag import ScriptTag
 from lib.generator.linkfilter import LinkFilter
 from lib.generator.xsspayload import XssPayload
 from lib.generator.pdfgenerator import PdfGnerator
 from lib.structure.reporttext import ReportText
-
-# TODO: Remove these vars or change it to class LE.WANG
-# All XSS vulnerability payloads
 
 def alreadyExist(link):
     '''
