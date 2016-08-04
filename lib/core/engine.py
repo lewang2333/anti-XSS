@@ -60,19 +60,16 @@ def isLink(link):
 
     return True
 
-def formalizeLink(link):
+def formalize(url):
     '''
     Formalize the link (url)
     '''
 
-    formalizedLink = link
-    formalizedLink = formalizedLink.replace('\t','')
-    formalizedLink = formalizedLink.replace('\n','')
-    formalizedLink = formalizedLink.replace(' ','')
-    if formalizedLink[len(formalizedLink) - 1] == '/':
-        formalizedLink = formalizedLink[:len(formalizedLink) - 1]
+    length = len(url)
+    if url[length - 1] == '/':
+        return url[:length - 1]
 
-    return formalizedLink
+    return url
 
 def getRoot(url):
     '''
@@ -106,7 +103,6 @@ def completeLink(link, hostUrl, domain):
 
     return completedLink
 
-
 def getPage(rootLink, depth):
     '''
     Get the source code of pages and get the links on them
@@ -139,7 +135,7 @@ def getPage(rootLink, depth):
                 isAnyScript = True
                 newUrl = htmlSource[headPos + 6:tailPos]
                 # Formalize the origin link
-                newUrl = formalizeLink(newUrl)
+                newUrl = formalize(newUrl)
                 # Complete it with domain
                 newUrl = completeLink(newUrl, link.getUrl(), link.getDomain())
                 # Reconstruct link
