@@ -12,6 +12,7 @@ from script import Script
 from lib.core.link import Link
 from lib.var.links import Links
 from lib.var.scripts import Scripts
+from lib.var.xssscripts import XssScripts
 from lib.core.countpage import CountPage
 from lib.generator.report import gnrReport
 from lib.generator.scripttag import ScriptTag
@@ -22,7 +23,6 @@ from lib.structure.reporttext import ReportText
 
 # TODO: Remove these vars or change it to class LE.WANG
 # All XSS vulnerability payloads
-xssScripts = []
 
 def alreadyExist(link):
     '''
@@ -112,7 +112,7 @@ def getPage(rootLink, depth):
     Get the source code of pages and get the links on them
     '''
 
-    # Init the glbal var CountPage().number as 0
+    # Init the glbal var CountPage().number with 0
     CountPage(0)
 
     Links().addText(rootLink)
@@ -184,17 +184,15 @@ def xssScanner():
     Store the XSS Script
     '''
 
-    global xssScripts
-
     xssPayloads = XssPayload().getXssPayload()
 
     for script in Scripts().getContent():
         for xssPayload in xssPayloads:
             if (script.getScript().find(xssPayload.replace('\n','')) > -1):
                 script.setDanger(True)
-                xssScripts.append(script.getScript() + '\t' + script.getFromDomain())
+                XssScripts().addText(script.getScript() + '\t' + script.getFromDomain())
 
                 break
 
-    gnrReport(xssScripts)
+    gnrReport(XssScripts().getContent())
     PdfGnerator(ReportText().getText())
