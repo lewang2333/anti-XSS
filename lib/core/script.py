@@ -35,3 +35,6 @@ class Script(object):
 
     def find(self, target):
         return self.__script.find(target)
+
+    def toString(self):
+        return 'script= ' + self.__script + '\nfromDomain= ' + self.__fromDomain + '\ndanger= ' + str(self.__danger)
