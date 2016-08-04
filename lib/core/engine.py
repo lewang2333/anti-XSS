@@ -154,8 +154,6 @@ def getScript():
 
     pass
 
-
-
 def xssScanner():
     '''
     Store the XSS Script
