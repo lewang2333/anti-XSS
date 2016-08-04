@@ -28,3 +28,9 @@ def isExist(url):
             return True
 
     return False
+
+def initialize(url):
+    if (url.find('http://') == -1) and (url.find('https://') == -1):
+        return 'http://' + url
+
+    return url
