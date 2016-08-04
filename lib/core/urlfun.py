@@ -4,6 +4,9 @@
 Copyright (c) 2016 anti-XSS developers
 '''
 
+from lib.core.link import Link
+from lib.var.links import Links
+
 def formalize(url):
     '''
     Formalize the link (url)
@@ -14,3 +17,14 @@ def formalize(url):
         return url[:length - 1]
 
     return url
+
+def isExist(url):
+    '''
+    Judge if the link is already exist in links[]
+    '''
+
+    for link in Links().getContent():
+        if url.getUrl() == link.getUrl():
+            return True
+
+    return False
