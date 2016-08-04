@@ -35,19 +35,6 @@ def getFatherUrl(url):
 
     return fatherUrl
 
-def isLink(link):
-    # TODO: There may meet a problem when there is a couple of same keywords in the url;
-    '''
-    Judge if this link is a 'legel' link in scanner
-    '''
-
-    filterList = LinkFilter().getLinkFilter()
-    for filterString in filterList:
-        if link.find(filterString) != -1:
-            return False
-
-    return True
-
 def getRoot(url):
     '''
     Return the domain
