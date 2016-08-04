@@ -8,6 +8,8 @@ import os
 import urllib
 import urllib2
 
+from lib.core.strfun import *
+
 from script import Script
 from lib.core.link import Link
 from lib.var.links import Links
@@ -60,16 +62,6 @@ def isLink(link):
 
     return True
 
-def formalize(url):
-    '''
-    Formalize the link (url)
-    '''
-
-    length = len(url)
-    if url[length - 1] == '/':
-        return url[:length - 1]
-
-    return url
 
 def getRoot(url):
     '''
