@@ -6,6 +6,8 @@ Copyright (c) 2016 anti-XSS developers
 
 import sys
 
+from lib.core.urlfun import *
+
 from lib.core.link import Link
 from optparse import OptionParser
 from lib.core.engine import getPage
@@ -20,7 +22,8 @@ def main():
     (options, args) = parser.parse_args()
 
     if options.startUrl:
-        rootLink = Link(options.startUrl, options.startUrl)
+        url = initialize(options.startUrl)
+        rootLink = Link(url, url)
         if options.depth:
             getPage(rootLink, int(options.depth))
         else:
