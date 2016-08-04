@@ -6,6 +6,8 @@ Copyright (c) 2016 anti-XSS developers
 
 from lib.core.link import Link
 from lib.var.links import Links
+from lib.generator.linkfilter import LinkFilter
+
 
 def formalize(url):
     '''
@@ -18,6 +20,7 @@ def formalize(url):
 
     return url
 
+
 def isExist(url):
     '''
     Judge if the link is already exist in links[]
@@ -29,8 +32,23 @@ def isExist(url):
 
     return False
 
+
 def initialize(url):
     if (url.find('http://') == -1) and (url.find('https://') == -1):
         return 'http://' + url
 
     return url
+
+
+def isLink(url):
+    # TODO: There may meet a problem when there is a couple of same keywords in the url;
+    '''
+    Judge if this link is a 'legel' link in scanner
+    '''
+
+    filterList = LinkFilter().getLinkFilter()
+    for filterString in filterList:
+        if url.find(filterString) != -1:
+            return False
+
+    return True
