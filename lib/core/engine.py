@@ -18,7 +18,6 @@ from lib.var.countpage import CountPage
 from lib.var.xssscripts import XssScripts
 from lib.generator.report import gnrReport
 from lib.generator.scripttag import ScriptTag
-from lib.generator.linkfilter import LinkFilter
 from lib.generator.xsspayload import XssPayload
 from lib.generator.pdfgenerator import PdfGnerator
 from lib.structure.reporttext import ReportText
