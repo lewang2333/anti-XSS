@@ -8,7 +8,7 @@ import sys
 
 from lib.core.urlfun import *
 
-from lib.core.link import Link
+from lib.var.link import Link
 from optparse import OptionParser
 from lib.core.engine import getPage
 from lib.core.engine import getScript
