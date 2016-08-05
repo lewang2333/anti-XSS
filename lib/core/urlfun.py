@@ -4,7 +4,7 @@
 Copyright (c) 2016 anti-XSS developers
 '''
 
-from lib.core.link import Link
+from lib.var.link import Link
 from lib.var.links import Links
 from lib.generator.linkfilter import LinkFilter
 
