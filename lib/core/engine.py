@@ -11,7 +11,7 @@ import urllib2
 from lib.core.urlfun import *
 
 from script import Script
-from lib.core.link import Link
+from lib.var.link import Link
 from lib.var.links import Links
 from lib.var.scripts import Scripts
 from lib.var.countpage import CountPage
