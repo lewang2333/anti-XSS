@@ -106,9 +106,6 @@ def getPage(rootLink, depth):
                      Links().addText(newLink)
             pointer = tailPos + 1
 
-    # Debug
-    # for link in Links().getContent():
-    #     print link.getUrl()
     pass
 
 def getScript():
