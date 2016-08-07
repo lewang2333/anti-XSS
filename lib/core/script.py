@@ -5,6 +5,9 @@ Copyright (c) 2016 anti-XSS developers
 '''
 
 class Script(object):
+    '''
+    To store Javascript
+    '''
 
     __script = ''
     __fromDomain = ''
