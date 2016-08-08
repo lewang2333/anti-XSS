@@ -16,11 +16,12 @@ from lib.var.links import Links
 from lib.var.scripts import Scripts
 from lib.var.countpage import CountPage
 from lib.var.xssscripts import XssScripts
+from lib.var.reporttext import ReportText
 from lib.generator.report import gnrReport
 from lib.generator.scripttag import ScriptTag
 from lib.generator.xsspayload import XssPayload
 from lib.generator.pdfgenerator import PdfGnerator
-from lib.structure.reporttext import ReportText
+
 
 def getFatherUrl(url):
     # TODO: change this silly name of this function LE.WANG

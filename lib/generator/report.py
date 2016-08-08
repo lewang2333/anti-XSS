@@ -7,7 +7,7 @@ Copyright (c) 2016 anti-XSS developers
 import sys
 import os
 
-from lib.structure.reporttext import ReportText
+from lib.var.reporttext import ReportText
 
 def gnrReport(xssScripts):
 
