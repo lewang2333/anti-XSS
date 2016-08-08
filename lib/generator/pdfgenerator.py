@@ -12,7 +12,10 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 
 class PdfGnerator(object):
-    """docstring for """
+    # TODO: change the class name since there's a wrong spelling
+    '''
+    To generate the PDF report.
+    '''
     __target = ''
     __text = []
     __pdfName = ''
