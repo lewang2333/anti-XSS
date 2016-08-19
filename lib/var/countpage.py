@@ -11,11 +11,20 @@ class CountPage(object):
     def __init__(self, number=0):
         self.number = number
 
+        pass
+
     def setNumber(self, number):
         self.number = number
+
+        pass
 
     def getNumber(self):
         return self.number
 
     def incNumber(self):
         self.number += 1
+
+        pass
+
+    def toString(self):
+        return 'number = ' + str(number)
