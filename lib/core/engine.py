@@ -21,7 +21,24 @@ from lib.generator.report import gnrReport
 from lib.generator.scripttag import ScriptTag
 from lib.generator.xsspayload import XssPayload
 from lib.generator.pdfgenerator import PdfGnerator
+from lib.var.page import Page
 
+def scan(target):
+
+    newpage = Page(url=target, html=get_html(target))
+
+    return newpage.get_html()
+
+def get_html(url):
+    '''
+    Retrun the html code of the URL
+    '''
+
+    req = urllib2.Request(url)
+    response = urllib2.urlopen(req)
+    html = response.read()
+
+    return html
 
 def getFatherUrl(url):
     # TODO: change this silly name of this function LE.WANG

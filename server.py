@@ -5,6 +5,8 @@ import tornado.ioloop
 import tornado.options
 import tornado.web
 
+from lib.core.engine import scan
+
 from tornado.options import define, options
 define("port", default=8000, help="run on the given port", type=int)
 
@@ -15,7 +17,7 @@ class IndexHandler(tornado.web.RequestHandler):
 class FeedBackHandler(tornado.web.RequestHandler):
     def post(self):
         target = self.get_argument('target')
-        self.render('feedback.html', target=target)
+        self.render('feedback.html', target=scan(target))
 
 if __name__ == '__main__':
     tornado.options.parse_command_line()
