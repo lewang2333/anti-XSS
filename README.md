@@ -9,10 +9,6 @@ anti-XSS is an open source XSS scanning tool which comes with a powerful detecti
 
 **N.B: The project is under development and prone to bugs**
 
-# Screenshots
-
-![Screenshot](http://i63.tinypic.com/30aw64n.png)
-
 # Requirements
 
 * [Python 2.7.x](http://www.python.org/download/)
