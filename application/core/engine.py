@@ -54,7 +54,10 @@ def find_url(page):
     front = 0
 
     while (front <= length):
-        # TODO
-
+        if html.find('<a href=',front) == -1:
+            continue
+        tail = html.find('a>',front)
+        link = html[html.find('<a href=',front) + 9: tail]
+        urls.append(link)
 
     return urls
