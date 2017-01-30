@@ -40,7 +40,7 @@ To get an overview of anti-XSS capabilities, list of supported features and desc
 
 # Links
 
-* Author's homepage: http://laiw3n.com
+* Author's homepage: http://www.lewang2333.com
 * Download: [.tar.gz](https://github.com/lewangbtcc/anti-XSS/tarball/master) or [.zip](https://github.com/lewangbtcc/anti-XSS/zipball/master)
 
 
