@@ -42,9 +42,3 @@ To get an overview of anti-XSS capabilities, list of supported features and desc
 
 * Author's homepage: http://www.lewang2333.com
 * Download: [.tar.gz](https://github.com/lewangbtcc/anti-XSS/tarball/master) or [.zip](https://github.com/lewangbtcc/anti-XSS/zipball/master)
-
-
-# Acknowledgement
-
-* Implementation promoting: Mikael Wang
-* Technical support (alphabetical order): Bzn, [Chaochao Wang](https://github.com/zsulocal), [Jamie Cheng](https://github.com/starit), [Thomas Yu](https://github.com/wenqingyu), [Yang Yang](https://github.com/reliveyy), [Zeyu Chen](https://github.com/xinyifly)
