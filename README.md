@@ -2,11 +2,8 @@
 
 [![Python 2.7](https://img.shields.io/badge/python-2.7-yellow.svg)](https://www.python.org/)
 [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://raw.githubusercontent.com/lewangbtcc/anti-XSS/master/LICENSE)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Le%20Wang-blue.svg)](http://www.linkedin.com/in/le-wang-5870bb114)
 
-anti-XSS is an open source XSS scanning tool which comes with a powerful detection engine. It automates the process of detecting as well as mining XSS scripts and generate the scanning report automatically.
-
-**N.B: The project is under development and prone to bugs**
+anti-XSS is an open source XSS auditor which comes with a powerful detection engine. It automates the process of detecting as well as mining XSS scripts and generates the scanning report automatically.
 
 # Requirements
 
@@ -39,5 +36,5 @@ To get an overview of anti-XSS capabilities, list of supported features and desc
 
 # Links
 
-* Author's homepage: http://www.lewang2333.com
+* Author's homepage: https://lewang2333.github.io
 * Download: [.tar.gz](https://github.com/lewangbtcc/anti-XSS/tarball/master) or [.zip](https://github.com/lewangbtcc/anti-XSS/zipball/master)
